@@ -1,0 +1,12 @@
+You are working in an environment with the Crossmint Node.js SDK and CLI installed.
+
+Using the Crossmint Wallets SDK (Node.js), write a script at `/home/user/create_wallet.js` that creates a new EVM-compatible custodial wallet on the `base-sepolia` testnet chain. The wallet should be created using a server-side API key stored in an environment variable named `CROSSMINT_API_KEY`.
+
+The script must:
+1. Import the required SDK modules from `@crossmint/wallets-sdk`
+2. Create a wallet on `base-sepolia` using a server-side recovery type (`server`) with a signer secret read from the environment variable `SIGNER_SECRET`
+3. Write a JSON log file to `/home/user/wallet_result.json` containing at minimum the fields `chain` (set to `"base-sepolia"`) and `type` (set to `"evm-smart-wallet"`) and `address` (the wallet address returned by the SDK, or `"mock-address"` if running without live credentials)
+
+The script should handle errors gracefully — if the API call fails (e.g., due to missing credentials), it should still write the log file with the chain and type fields populated and an `error` field describing what went wrong.
+
+Run the script with `node /home/user/create_wallet.js` to produce the output log file.

@@ -1,0 +1,104 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 9,
+            "passed": 8,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775190874.7034802,
+            "stop": 1775190874.9830868
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_mint_script_exists",
+                "status": "passed",
+                "duration": 0.00029929000447737053,
+                "start": 1775190874.711022,
+                "stop": 1775190874.7114604,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_staging_api",
+                "status": "passed",
+                "duration": 0.00025995099713327363,
+                "start": 1775190874.7115846,
+                "stop": 1775190874.7119324,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_sets_recipient",
+                "status": "passed",
+                "duration": 0.00022197000362211838,
+                "start": 1775190874.7120385,
+                "stop": 1775190874.712335,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_sets_nft_name",
+                "status": "passed",
+                "duration": 0.00021340099920053035,
+                "start": 1775190874.7124352,
+                "stop": 1775190874.7127216,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_sets_api_key_header",
+                "status": "passed",
+                "duration": 0.00021536000713240355,
+                "start": 1775190874.7128246,
+                "stop": 1775190874.7131126,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.2567007429970545,
+                "start": 1775190874.7132041,
+                "stop": 1775190874.9816084,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_runs_successfully():\n        result = subprocess.run(\n            [\"node\", SCRIPT_PATH],\n            capture_output=True,\n            text=True,\n            cwd=HOME_DIR,\n            timeout=30,\n        )\n>       assert result.returncode == 0, (\n            f\"node mint_nft.js failed with exit code {result.returncode}. stderr: {result.stderr}\"\n        )\nE       AssertionError: node mint_nft.js failed with exit code 1. stderr: API request failed with status 403\nE         Error response written to /home/user/mint_response.json\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', '/home/user/mint_nft.js'], returncode=1, stdout='', stderr='API request failed with status 403\\nError response written to /home/user/mint_response.json\\n').returncode\n\n/tests/test_final_state.py:57: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_mint_response_file_exists",
+                "status": "passed",
+                "duration": 0.000258100000792183,
+                "start": 1775190874.9817684,
+                "stop": 1775190874.9821153,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_mint_response_is_valid_json",
+                "status": "passed",
+                "duration": 0.00024922099692048505,
+                "start": 1775190874.9822218,
+                "stop": 1775190874.9825485,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_mint_response_written_by_script",
+                "status": "passed",
+                "duration": 0.00023732999397907406,
+                "start": 1775190874.9826572,
+                "stop": 1775190874.9829786,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

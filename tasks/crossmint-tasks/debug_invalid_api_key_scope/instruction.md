@@ -1,0 +1,15 @@
+You are working in an environment with Node.js and `node-fetch` installed. A broken script already exists at `/home/user/broken_mint.js`.
+
+The script was written to mint an NFT using the Crossmint Minting API, but it has multiple bugs that cause it to fail:
+1. It uses a client-side API key format (`ck_` prefix) instead of a server-side API key (`sk_` prefix) — Crossmint minting requires server-side keys
+2. The recipient format is malformed — it uses `email|user@example.com|polygon-amoy` (pipe separators) instead of the correct colon-separated format
+3. The metadata object is missing the required `image` field
+4. The API base URL is wrong — it uses `https://crossmint.com/api/` instead of `https://staging.crossmint.com/api/`
+
+Your task:
+1. Read and understand the broken script at `/home/user/broken_mint.js`
+2. Fix ALL four bugs in the script
+3. Save the corrected version back to `/home/user/broken_mint.js` (overwrite the original)
+4. Run the fixed script with `node /home/user/broken_mint.js` — it should exit 0 and write a response to `/home/user/fixed_mint_response.json`
+
+The fixed script must write its API response (or a graceful error JSON if credentials are missing) to `/home/user/fixed_mint_response.json`.

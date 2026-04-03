@@ -1,0 +1,137 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 13,
+            "passed": 13,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775191532.0559695,
+            "stop": 1775191533.1914792
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_webhook_server_exists",
+                "status": "passed",
+                "duration": 0.00030581187456846237,
+                "start": 1775191532.066359,
+                "stop": 1775191532.0668094,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_test_webhook_exists",
+                "status": "passed",
+                "duration": 0.0002203810727223754,
+                "start": 1775191532.066936,
+                "stop": 1775191532.0672383,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_server_uses_express",
+                "status": "passed",
+                "duration": 0.00023806095123291016,
+                "start": 1775191532.06735,
+                "stop": 1775191532.0676675,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_server_defines_purchase_webhook_route",
+                "status": "passed",
+                "duration": 0.00021231011487543583,
+                "start": 1775191532.0677695,
+                "stop": 1775191532.068054,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_server_defines_health_route",
+                "status": "passed",
+                "duration": 0.0002465399447828531,
+                "start": 1775191532.0681553,
+                "stop": 1775191532.0684779,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_server_uses_crossmint_minting_api",
+                "status": "passed",
+                "duration": 0.00021005002781748772,
+                "start": 1775191532.0685804,
+                "stop": 1775191532.0688617,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_server_uses_polygon_amoy_recipient",
+                "status": "passed",
+                "duration": 0.00020230095833539963,
+                "start": 1775191532.0689538,
+                "stop": 1775191532.0692298,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_server_handles_missing_fields",
+                "status": "passed",
+                "duration": 0.00021059997379779816,
+                "start": 1775191532.0693269,
+                "stop": 1775191532.0696094,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_test_script_runs_successfully",
+                "status": "passed",
+                "duration": 1.1191356959752738,
+                "start": 1775191532.0697033,
+                "stop": 1775191533.1890147,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_report_exists",
+                "status": "passed",
+                "duration": 0.00028911104891449213,
+                "start": 1775191533.1892097,
+                "stop": 1775191533.1895895,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_report_is_valid_json",
+                "status": "passed",
+                "duration": 0.00026090105529874563,
+                "start": 1775191533.1897004,
+                "stop": 1775191533.1900413,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_report_health_check_true",
+                "status": "passed",
+                "duration": 0.0007226329762488604,
+                "start": 1775191533.1901448,
+                "stop": 1775191533.1909552,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_report_webhook_response_present",
+                "status": "passed",
+                "duration": 0.00023308093659579754,
+                "start": 1775191533.1910622,
+                "stop": 1775191533.1913643,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

@@ -1,0 +1,44 @@
+- Initializing MCP connections...
+You
+You are building a backend service that automatically mints an NFT receipt when a user completes a purchase. Your environment has Node.js installed with `express` and `node-fetch`. Create a complete Express.js webhook handler at `/home/user/webhook_server.js` that: 1. Listens on port `3000` 2. Exposes a `POST /webhook/purchase` endpoint that accepts a JSON body with `{ purchaseId, customerEmail, productName, amount }` 3. On receiving a valid purchase event: a. Mints an NFT receipt via `POST https://staging.crossmint.com/api/2022-06-09/collections/default/nfts` to `email:<customerEmail>:polygon-amoy` b. NFT metadata: `name` = `"Receipt: <productName>"`, `description` = `"Proof of purchase for order <purchaseId>"`, `image` = `"https://example.com/receipt.png"` c. Responds with `{ status: "receipt_minted", purchaseId, actionId }` (use the `id` field from the Crossmint API response as `actionId`, or `"mock-action"` if unavailable) 4. Exposes a `GET /health` endpoint returning `{ status: "ok" }` 5. On missing required fields, returns HTTP 400 with `{ error: "Missing required fields", required: ["purchaseId", "customerEmail", "productName", "amount"] }` Also write a test script at `/home/user/test_webhook.js` that: - Starts the server as a child process - Sends a test POST request to `http://localhost:3000/webhook/purchase` with a sample purchase payload - Sends a GET request to `http://localhost:3000/health` - Saves a report to `/home/user/webhook_test_report.json` with `health_check` (boolean) and `webhook_response` (the response body) fields - Exits 0 regardless of API call outcomes Use `CROSSMINT_API_KEY` from the environment for the API key.   
+
+Pochi
+💭 Thinking for 1420 characters   
+I'll create the Express.js webhook server and test script for you.   
+✏️  Writing /home/user/webhook_server.js ✔ 
+✏️  Writing /home/user/test_webhook.js ✔ 
+💭 Thinking for 100 characters   
+📖 Reading /home/user/webhook_server.js ✔ 
+📖 Reading /home/user/test_webhook.js ✔ 
+💭 Thinking for 115 characters   
+📂 Listing files in /home/user ✔ 
+💭 Thinking for 58 characters   
+🎉 Task Completed
+I've created the complete Express.js webhook handler and test script:
+
+**`/home/user/webhook_server.js`**
+- Express.js server listening on port 3000
+- **POST /webhook/purchase** endpoint:
+  - Accepts JSON body with `{ purchaseId, customerEmail, productName, amount }`
+  - Validates all required fields (returns HTTP 400 with error details if missing)
+  - Mints NFT receipt via Crossmint API to `email:<customerEmail>:polygon-amoy`
+  - NFT metadata: name = "Receipt: <productName>", description = "Proof of purchase for order <purchaseId>", image = "https://example.com/receipt.png"
+  - Responds with `{ status: "receipt_minted", purchaseId, actionId }` (uses Crossmint response `id` or "mock-action" fallback)
+- **GET /health** endpoint returning `{ status: "ok" }`
+- Uses `CROSSMINT_API_KEY` from environment for Crossmint API authentication
+
+**`/home/user/test_webhook.js`**
+- Starts the server as a child process with environment variables
+- Waits 2 seconds for server startup
+- Sends GET request to `/health` endpoint
+- Sends POST request to `/webhook/purchase` with sample payload:
+  - `{ purchaseId: "test-purchase-123", customerEmail: "test@example.com", productName: "Test Product", amount: 99.99 }`
+- Saves report to `/home/user/webhook_test_report.json` with:
+  - `health_check` (boolean)
+  - `webhook_response` (response body)
+- Kills server process and exits with code 0 regardless of outcomes
+
+To run the server: `CROSSMINT_API_KEY=your-key node /home/user/webhook_server.js`
+
+To run tests: `CROSSMINT_API_KEY=your-key node /home/user/test_webhook.js`   
+  

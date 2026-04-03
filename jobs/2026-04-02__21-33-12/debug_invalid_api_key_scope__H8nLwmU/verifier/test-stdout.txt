@@ -1,0 +1,78 @@
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 https://deb.nodesource.com/node_20.x nodistro InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (8.5.0-2ubuntu10.8).
+0 upgraded, 0 newly installed, 0 to remove and 10 not upgraded.
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 6 packages in 17ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 8 items
+
+../tests/test_final_state.py F.F.....                                    [100%]
+
+=================================== FAILURES ===================================
+____________________ test_fixed_script_no_client_key_prefix ____________________
+
+    def test_fixed_script_no_client_key_prefix():
+        with open(SCRIPT_PATH) as f:
+            content = f.read()
+>       assert "ck_" not in content, (
+            "broken_mint.js must not contain 'ck_' client-side key prefix after fix."
+        )
+E       AssertionError: broken_mint.js must not contain 'ck_' client-side key prefix after fix.
+E       assert 'ck_' not in 'const fetch...\nmintNFT();'
+E         
+E         'ck_' is contained here:
+E           ent-side (ck_)
+E         ?           +++
+E             const apiKey = 'sk_test_51HxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXxX';
+E             
+E             // Fix 2: Correct recipient format using colon separators...
+E         
+E         ...Full output truncated (42 lines hidden), use '-vv' to show
+
+/tests/test_final_state.py:14: AssertionError
+__________________ test_fixed_script_correct_recipient_format __________________
+
+    def test_fixed_script_correct_recipient_format():
+        with open(SCRIPT_PATH) as f:
+            content = f.read()
+>       assert "email:test@example.com:polygon-amoy" in content, (
+            "broken_mint.js must use correct colon-separated recipient 'email:test@example.com:polygon-amoy'."
+        )
+E       AssertionError: broken_mint.js must use correct colon-separated recipient 'email:test@example.com:polygon-amoy'.
+E       assert 'email:test@example.com:polygon-amoy' in "const fetch = require('node-fetch');\n\nasync function mintNFT() {\n  // Fix 1: Using server-side API key (sk_) inste...fixed_mint_response.json', JSON.stringify({ error: error.message }, null, 2));\n    throw error;\n  }\n}\n\nmintNFT();"
+
+/tests/test_final_state.py:30: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_final_state.py::test_fixed_script_no_pipe_separator
+PASSED ../tests/test_final_state.py::test_fixed_script_correct_url
+PASSED ../tests/test_final_state.py::test_fixed_script_has_image_field
+PASSED ../tests/test_final_state.py::test_fixed_script_runs_successfully
+PASSED ../tests/test_final_state.py::test_fixed_response_exists
+PASSED ../tests/test_final_state.py::test_fixed_response_is_valid_json
+FAILED ../tests/test_final_state.py::test_fixed_script_no_client_key_prefix
+FAILED ../tests/test_final_state.py::test_fixed_script_correct_recipient_format
+========================= 2 failed, 6 passed in 1.53s ==========================

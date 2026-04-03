@@ -1,0 +1,101 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 9,
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775190859.3859284,
+            "stop": 1775190860.0597858
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_sign_script_exists",
+                "status": "passed",
+                "duration": 0.0003060600720345974,
+                "start": 1775190859.3944712,
+                "stop": 1775190859.3949168,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_wallets_sdk",
+                "status": "passed",
+                "duration": 0.0002608601935207844,
+                "start": 1775190859.3950408,
+                "stop": 1775190859.3953881,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "passed",
+                "duration": 0.6104145310819149,
+                "start": 1775190859.3954937,
+                "stop": 1775190860.00608,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sign_result_exists",
+                "status": "passed",
+                "duration": 0.0510434890165925,
+                "start": 1775190860.0062683,
+                "stop": 1775190860.057391,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sign_result_is_valid_json",
+                "status": "passed",
+                "duration": 0.00033330987207591534,
+                "start": 1775190860.0576508,
+                "stop": 1775190860.058089,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sign_result_chain_field",
+                "status": "passed",
+                "duration": 0.00022953981533646584,
+                "start": 1775190860.0581965,
+                "stop": 1775190860.0585039,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sign_result_message_field",
+                "status": "passed",
+                "duration": 0.00022936007007956505,
+                "start": 1775190860.0586083,
+                "stop": 1775190860.0589135,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sign_result_wallet_type_field",
+                "status": "passed",
+                "duration": 0.00020581111311912537,
+                "start": 1775190860.0590072,
+                "stop": 1775190860.0592794,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_sign_result_has_signature_or_error",
+                "status": "passed",
+                "duration": 0.00021767988801002502,
+                "start": 1775190860.0593696,
+                "stop": 1775190860.0596635,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

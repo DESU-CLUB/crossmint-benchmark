@@ -1,0 +1,22 @@
+- Initializing MCP connections...
+You
+You are working in an environment with Node.js installed. A file `/home/user/recipients.json` already exists containing a list of email addresses. Write a Node.js script at `/home/user/airdrop.js` that reads `/home/user/recipients.json` and uses the Crossmint Minting REST API to attempt to mint a "Welcome NFT" to each recipient on `polygon-amoy`. The script must: 1. Read the recipients list from `/home/user/recipients.json` (an array of email strings) 2. For each email, construct a recipient string in the format `email:<email>:polygon-amoy` and call the Crossmint Minting API at `https://staging.crossmint.com/api/2022-06-09/collections/default/nfts` 3. Use the `CROSSMINT_API_KEY` environment variable for the `x-api-key` header 4. NFT metadata: `name` = `"Welcome NFT"`, `description` = `"Airdrop token"`, `image` = `"https://example.com/welcome.png"` 5. After processing all recipients, write a summary to `/home/user/airdrop_summary.json` — a JSON object with: * `total`: total number of recipients processed * `results`: an array of objects, each with `email` (the address) and `status` (`"sent"` on HTTP 200/202, `"error"` otherwise) and optionally `response` (the raw API response body) Handle per-recipient errors gracefully — if one mint fails, continue processing the rest.   
+
+Pochi
+✏️  Writing /home/user/airdrop.js ✔ 
+🎉 Task Completed
+I have created the Node.js script at `/home/user/airdrop.js` to process the NFT airdrop according to your requirements. 
+
+Here is what the script does:
+1. **Reads Recipients**: It reads the array of email addresses from `/home/user/recipients.json`.
+2. **Authenticates**: It checks for the `CROSSMINT_API_KEY` environment variable and uses it in the `x-api-key` header.
+3. **Mints NFTs**: For each email, it calls the Crossmint Minting API on the `polygon-amoy` network, using the required `email:<email>:polygon-amoy` format and passing the specified metadata (`name`, `description`, and `image`).
+4. **Error Handling**: It processes the mints sequentially and catches errors on a per-recipient basis. If one fails, it continues processing the rest without crashing.
+5. **Generates Summary**: Once complete, it saves a detailed JSON report to `/home/user/airdrop_summary.json`, containing the `total` number of addresses processed and a `results` array with the `email`, `status` (`sent` or `error`), and the raw API `response`.
+
+To run the script, simply execute:
+```bash
+export CROSSMINT_API_KEY="your_api_key_here"
+node /home/user/airdrop.js
+```   
+  

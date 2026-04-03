@@ -1,0 +1,40 @@
+{
+    "id": "a805703a-8ff5-4ad9-975d-f8d60f4500ce",
+    "started_at": "2026-04-02T21:44:31.834767",
+    "finished_at": "2026-04-02T21:47:01.342475",
+    "n_total_trials": 10,
+    "stats": {
+        "n_trials": 10,
+        "n_errors": 0,
+        "evals": {
+            "pochi__gpt-5.2-codex__crossmint-tasks": {
+                "n_trials": 10,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.5
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "fix_broken_sdk_wallet_script__vPMbmMF",
+                            "mint_nft_to_email__bxaAfpH",
+                            "poll_mint_action_status__NfwWyKR",
+                            "nft_receipt_checkout_flow__HbCu8jM",
+                            "sdk_wallet_sign_message__aKk3h9Y"
+                        ],
+                        "0.0": [
+                            "wallet_send_usdc_transfer__jeUqyok",
+                            "debug_invalid_api_key_scope__EsfqhXa",
+                            "batch_nft_airdrop_from_list__F5g2Xqv",
+                            "agent_treasury_orchestrator__AjFGAP5",
+                            "create_crossmint_wallet__bWx9av6"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

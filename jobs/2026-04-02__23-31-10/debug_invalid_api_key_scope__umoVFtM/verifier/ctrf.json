@@ -1,0 +1,95 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 8,
+            "passed": 7,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775198270.0059872,
+            "stop": 1775198270.429226
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_fixed_script_no_client_key_prefix",
+                "status": "passed",
+                "duration": 0.0003423234447836876,
+                "start": 1775198270.0130606,
+                "stop": 1775198270.013558,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_no_pipe_separator",
+                "status": "passed",
+                "duration": 0.00025218259543180466,
+                "start": 1775198270.0136864,
+                "stop": 1775198270.0140197,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_correct_recipient_format",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0003771013580262661,
+                "start": 1775198270.0141256,
+                "stop": 1775198270.0248668,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_fixed_script_correct_recipient_format():\n        with open(SCRIPT_PATH) as f:\n            content = f.read()\n>       assert \"email:test@example.com:polygon-amoy\" in content, (\n            \"broken_mint.js must use correct colon-separated recipient 'email:test@example.com:polygon-amoy'.\"\n        )\nE       AssertionError: broken_mint.js must use correct colon-separated recipient 'email:test@example.com:polygon-amoy'.\nE       assert 'email:test@example.com:polygon-amoy' in \"const fetch = require('node-fetch');\\nconst fs = require('fs');\\n\\nasync function mintNFT() {\\n  const url = 'https:/...ync('/home/user/fixed_mint_response.json', JSON.stringify({ error: error.message }, null, 2));\\n  }\\n}\\n\\nmintNFT();\\n\"\n\n/tests/test_final_state.py:30: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_correct_url",
+                "status": "passed",
+                "duration": 0.0002469820901751518,
+                "start": 1775198270.0249963,
+                "stop": 1775198270.0253243,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_has_image_field",
+                "status": "passed",
+                "duration": 0.0002215714193880558,
+                "start": 1775198270.0254352,
+                "stop": 1775198270.0257316,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_runs_successfully",
+                "status": "passed",
+                "duration": 0.40143340127542615,
+                "start": 1775198270.0258248,
+                "stop": 1775198270.4274673,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_response_exists",
+                "status": "passed",
+                "duration": 0.00038478290662169456,
+                "start": 1775198270.4277332,
+                "stop": 1775198270.4282556,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_response_is_valid_json",
+                "status": "passed",
+                "duration": 0.00045308424159884453,
+                "start": 1775198270.4284482,
+                "stop": 1775198270.4290445,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

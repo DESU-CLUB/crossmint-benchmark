@@ -1,0 +1,95 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 8,
+            "passed": 7,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775197938.4598625,
+            "stop": 1775197939.0073607
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_create_wallet_script_exists",
+                "status": "passed",
+                "duration": 0.000289021001663059,
+                "start": 1775197938.467418,
+                "stop": 1775197938.4678419,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_wallets_sdk",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0003397899563424289,
+                "start": 1775197938.4679701,
+                "stop": 1775197938.4779563,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_uses_crossmint_wallets_sdk():\n        with open(SCRIPT_PATH) as f:\n            content = f.read()\n        assert \"@crossmint/wallets-sdk\" in content, (\n            \"create_wallet.js must import from @crossmint/wallets-sdk.\"\n        )\n>       assert \"CrossmintWallets\" in content, (\n            \"create_wallet.js must use CrossmintWallets from @crossmint/wallets-sdk.\"\n        )\nE       AssertionError: create_wallet.js must use CrossmintWallets from @crossmint/wallets-sdk.\nE       assert 'CrossmintWallets' in 'const fs = require(\\'fs\\');\\n\\nasync function createWallet() {\\n    const result = {\\n        chain: \"base-sepolia\",\\...gify(result, null, 2));\\n    console.log(\"Log file written to /home/user/wallet_result.json\");\\n}\\n\\ncreateWallet();\\n'\n\n/tests/test_final_state.py:23: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "passed",
+                "duration": 0.5265833410085179,
+                "start": 1775197938.4780746,
+                "stop": 1775197939.004996,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_result_file_exists",
+                "status": "passed",
+                "duration": 0.00026725095813162625,
+                "start": 1775197939.005359,
+                "stop": 1775197939.0057187,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_result_is_valid_json",
+                "status": "passed",
+                "duration": 0.0002411909808870405,
+                "start": 1775197939.0058234,
+                "stop": 1775197939.0061424,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_result_chain_field",
+                "status": "passed",
+                "duration": 0.00020672098617069423,
+                "start": 1775197939.006236,
+                "stop": 1775197939.0065184,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_result_type_field",
+                "status": "passed",
+                "duration": 0.00021245100651867688,
+                "start": 1775197939.0066059,
+                "stop": 1775197939.0068922,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_result_has_address_or_error",
+                "status": "passed",
+                "duration": 0.0002073410141747445,
+                "start": 1775197939.006989,
+                "stop": 1775197939.0072577,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

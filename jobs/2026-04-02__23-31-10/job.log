@@ -1,0 +1,721 @@
+Selected strategy: _DaytonaDirect
+Creating new AsyncDaytona client
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/fix_broken_sdk_wallet_script/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/mint_nft_to_email/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/poll_mint_action_status/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/wallet_send_usdc_transfer/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/debug_invalid_api_key_scope/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/nft_receipt_checkout_flow/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/sdk_wallet_sign_message/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/batch_nft_airdrop_from_list/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/agent_treasury_orchestrator/environment/Dockerfile
+Selected strategy: _DaytonaDirect
+Building environment from /Users/warrenlow/Documents/projects/pochi-harbor/crossmint-tasks/create_crossmint_wallet/environment/Dockerfile
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Command outputs captured
+Command outputs captured
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Command outputs captured
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with Node.js and the `node-fetch` library installed.
+
+Using the Crossmint Minting REST API, write a Node.js script at `/home/user/mint_nft.js` that mints a single NFT and delivers it to an email address.
+
+The script must:
+1. Use the Crossmint Minting API endpoint: `https://staging.crossmint.com/api/2022-06-09/collections/default/nfts`
+2. Send a `POST` request with the API key from the environment variable `CROSSMINT_API_KEY` in the `x-api-key` header
+3. Set the recipient to `email:test@example.com:polygon-amoy`
+4. Include NFT metadata: `name` set to `"Welcome NFT"`, `description` set to `"A welcome gift"`, and `image` set to `"https://example.com/nft.png"`
+5. Write the full API response (as JSON) to `/home/user/mint_response.json`
+6. Handle errors gracefully — if the API call fails (network error or HTTP error), write a JSON object with an `error` field to `/home/user/mint_response.json` instead of throwing
+
+Run the script with `node /home/user/mint_nft.js` to produce the output file.
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with Node.js installed. A file `/home/user/recipients.json` already exists containing a list of email addresses.
+
+Write a Node.js script at `/home/user/airdrop.js` that reads `/home/user/recipients.json` and uses the Crossmint Minting REST API to attempt to mint a "Welcome NFT" to each recipient on `polygon-amoy`.
+
+The script must:
+1. Read the recipients list from `/home/user/recipients.json` (an array of email strings)
+2. For each email, construct a recipient string in the format `email:<email>:polygon-amoy` and call the Crossmint Minting API at `https://staging.crossmint.com/api/2022-06-09/collections/default/nfts`
+3. Use the `CROSSMINT_API_KEY` environment variable for the `x-api-key` header
+4. NFT metadata: `name` = `"Welcome NFT"`, `description` = `"Airdrop token"`, `image` = `"https://example.com/welcome.png"`
+5. After processing all recipients, write a summary to `/home/user/airdrop_summary.json` — a JSON object with:
+   - `total`: total number of recipients processed
+   - `results`: an array of objects, each with `email` (the address) and `status` (`"sent"` on HTTP 200/202, `"error"` otherwise) and optionally `response` (the raw API response body)
+
+Handle per-recipient errors gracefully — if one mint fails, continue processing the rest.
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are building infrastructure for an AI agent that can autonomously manage funds. Your environment has Node.js and the `@crossmint/wallets-sdk` installed.
+
+Create a complete treasury orchestration module at `/home/user/treasury.js` that an AI agent could use as a tool. The module must export (using CommonJS `module.exports`) a single async function `executeTreasuryAction(action)` where `action` is an object with a `type` field.
+
+The module must handle these action types:
+- `{ type: 'create_wallet', userId: string, chain: string }` — creates a Crossmint EVM smart wallet for the given userId on the specified chain; returns `{ success: true, address, chain, userId }`
+- `{ type: 'check_balance', walletAddress: string, chain: string }` — queries the Crossmint API for the wallet balance; returns `{ success: true, walletAddress, chain, balance: string }`  
+- `{ type: 'mint_receipt', email: string, purchaseId: string }` — mints a "Purchase Receipt" NFT to the given email on `polygon-amoy` via the Crossmint minting API; returns `{ success: true, email, purchaseId, actionId: string }`
+
+For any action type not in the above list, return `{ success: false, error: 'Unknown action type' }`.
+
+Also write a test harness at `/home/user/run_treasury_tests.js` that:
+1. Imports `executeTreasuryAction` from `./treasury.js`
+2. Runs all three action types with mock inputs
+3. Writes results to `/home/user/treasury_test_results.json` as an array of result objects, each with `action_type` and `result` fields
+4. Exits 0 regardless of whether API calls succeed (graceful error handling required)
+
+All API credentials should be read from environment variables (`CROSSMINT_API_KEY`, `SIGNER_SECRET`).
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are building a backend service that automatically mints an NFT receipt when a user completes a purchase. Your environment has Node.js installed with `express` and `node-fetch`.
+
+Create a complete Express.js webhook handler at `/home/user/webhook_server.js` that:
+1. Listens on port `3000`
+2. Exposes a `POST /webhook/purchase` endpoint that accepts a JSON body with `{ purchaseId, customerEmail, productName, amount }`
+3. On receiving a valid purchase event:
+   a. Mints an NFT receipt via `POST https://staging.crossmint.com/api/2022-06-09/collections/default/nfts` to `email:<customerEmail>:polygon-amoy`
+   b. NFT metadata: `name` = `"Receipt: <productName>"`, `description` = `"Proof of purchase for order <purchaseId>"`, `image` = `"https://example.com/receipt.png"`
+   c. Responds with `{ status: "receipt_minted", purchaseId, actionId }` (use the `id` field from the Crossmint API response as `actionId`, or `"mock-action"` if unavailable)
+4. Exposes a `GET /health` endpoint returning `{ status: "ok" }`
+5. On missing required fields, returns HTTP 400 with `{ error: "Missing required fields", required: ["purchaseId", "customerEmail", "productName", "amount"] }`
+
+Also write a test script at `/home/user/test_webhook.js` that:
+- Starts the server as a child process
+- Sends a test POST request to `http://localhost:3000/webhook/purchase` with a sample purchase payload
+- Sends a GET request to `http://localhost:3000/health`
+- Saves a report to `/home/user/webhook_test_report.json` with `health_check` (boolean) and `webhook_response` (the response body) fields
+- Exits 0 regardless of API call outcomes
+
+Use `CROSSMINT_API_KEY` from the environment for the API key.
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with the Crossmint Wallets Node.js SDK installed.
+
+Using the `@crossmint/wallets-sdk`, write a script at `/home/user/transfer_usdc.js` that orchestrates a stablecoin transfer between two wallets on `base-sepolia`.
+
+The script must:
+1. Initialize the Crossmint client with `createCrossmint` using the `CROSSMINT_API_KEY` environment variable
+2. Create (or get) two separate EVM smart wallets on `base-sepolia`:
+   - A "sender" wallet: locator `userId:sender-001`, server recovery using `SIGNER_SECRET`
+   - A "receiver" wallet: locator `userId:receiver-001`, server recovery using `SIGNER_SECRET`
+3. Attempt to transfer `0.001` USDC from the sender wallet to the receiver wallet's address. The USDC contract address on Base Sepolia is `0x036CbD53842c5426634e7929541eC2318f3dCF7e`
+4. Write a JSON log to `/home/user/transfer_log.json` with:
+   - `sender_chain`: `"base-sepolia"`
+   - `receiver_chain`: `"base-sepolia"`
+   - `amount`: `"0.001"`
+   - `token`: `"USDC"`
+   - `sender_address`: the sender wallet address (or `"mock-sender"` if unavailable)
+   - `receiver_address`: the receiver wallet address (or `"mock-receiver"` if unavailable)
+   - `transfer_status`: `"submitted"`, `"failed"`, or `"mock"` depending on the outcome
+
+Handle errors gracefully — write the log regardless of whether the transfer succeeds.
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with the Crossmint Wallets Node.js SDK installed.
+
+Using the `@crossmint/wallets-sdk`, write a Node.js script at `/home/user/sign_message.js` that:
+1. Initializes the Crossmint client using the `createCrossmint` function with the server API key from the `CROSSMINT_API_KEY` environment variable
+2. Creates a `CrossmintWallets` instance
+3. Attempts to get or create an EVM smart wallet on `base-sepolia` — use wallet locator `userId:demo-user-001` and server-side recovery
+4. Signs the message `"Hello from Crossmint"` using the wallet's signing capabilities
+5. Writes a JSON log to `/home/user/sign_result.json` with these fields:
+   - `chain`: `"base-sepolia"`
+   - `message`: `"Hello from Crossmint"`
+   - `signature`: the hex signature string returned by the SDK (or `"mock-signature"` if credentials are unavailable)
+   - `wallet_type`: `"evm-smart-wallet"`
+
+Handle errors gracefully — if signing fails due to missing credentials, write the log with the above fields plus an `error` field describing the failure.
+
+Run with `node /home/user/sign_message.js` to produce the output.
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with Node.js and `node-fetch` installed. A broken script already exists at `/home/user/broken_mint.js`.
+
+The script was written to mint an NFT using the Crossmint Minting API, but it has multiple bugs that cause it to fail:
+1. It uses a client-side API key format (`ck_` prefix) instead of a server-side API key (`sk_` prefix) — Crossmint minting requires server-side keys
+2. The recipient format is malformed — it uses `email|user@example.com|polygon-amoy` (pipe separators) instead of the correct colon-separated format
+3. The metadata object is missing the required `image` field
+4. The API base URL is wrong — it uses `https://crossmint.com/api/` instead of `https://staging.crossmint.com/api/`
+
+Your task:
+1. Read and understand the broken script at `/home/user/broken_mint.js`
+2. Fix ALL four bugs in the script
+3. Save the corrected version back to `/home/user/broken_mint.js` (overwrite the original)
+4. Run the fixed script with `node /home/user/broken_mint.js` — it should exit 0 and write a response to `/home/user/fixed_mint_response.json`
+
+The fixed script must write its API response (or a graceful error JSON if credentials are missing) to `/home/user/fixed_mint_response.json`.
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with the Crossmint Wallets Node.js SDK installed. A broken script exists at `/home/user/broken_wallet.js` that attempts to create an EVM wallet using the SDK, but it has bugs that prevent it from running correctly.
+
+Run the script to observe its errors:
+```
+node /home/user/broken_wallet.js
+```
+
+Diagnose and fix ALL bugs in `/home/user/broken_wallet.js`. The correct behavior is:
+- Import `createCrossmint` and `CrossmintWallets` from `@crossmint/wallets-sdk`
+- Create a wallet on `base-sepolia` with server-side recovery
+- Write a JSON result to `/home/user/wallet_debug_result.json` with `chain`, `type`, and either `address` or `error` fields
+
+After fixing the bugs, the script must run with `node /home/user/broken_wallet.js`, exit 0, and produce `/home/user/wallet_debug_result.json`.
+
+Write a brief diagnosis to `/home/user/debug_notes.txt` listing each bug you found and how you fixed it (one line per bug, format: `BUG: <description> | FIX: <what you changed>`).
+EOF
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with the Crossmint Node.js SDK and CLI installed.
+
+Using the Crossmint Wallets SDK (Node.js), write a script at `/home/user/create_wallet.js` that creates a new EVM-compatible custodial wallet on the `base-sepolia` testnet chain. The wallet should be created using a server-side API key stored in an environment variable named `CROSSMINT_API_KEY`.
+
+The script must:
+1. Import the required SDK modules from `@crossmint/wallets-sdk`
+2. Create a wallet on `base-sepolia` using a server-side recovery type (`server`) with a signer secret read from the environment variable `SIGNER_SECRET`
+3. Write a JSON log file to `/home/user/wallet_result.json` containing at minimum the fields `chain` (set to `"base-sepolia"`) and `type` (set to `"evm-smart-wallet"`) and `address` (the wallet address returned by the SDK, or `"mock-address"` if running without live credentials)
+
+The script should handle errors gracefully — if the API call fails (e.g., due to missing credentials), it should still write the log file with the chain and type fields populated and an `error` field describing what went wrong.
+
+Run the script with `node /home/user/create_wallet.js` to produce the output log file.
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.5": {
+          "name": "kimi-K2.5"
+        },
+        "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+          "name": "qwen3-coder-480b"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+You are working in an environment with Node.js and `node-fetch` installed.
+
+A common challenge with Crossmint is that NFT minting is asynchronous. When you POST to the minting API, you get back an `actionId` immediately, but the actual mint may take seconds to complete. Developers who fail to poll for the final status leave their UIs hanging.
+
+Write a Node.js script at `/home/user/mint_and_poll.js` that:
+1. Initiates an NFT mint to `email:demo@example.com:polygon-amoy` via `POST https://staging.crossmint.com/api/2022-06-09/collections/default/nfts` with metadata `name: "Poll Test NFT"`, `description: "Testing async polling"`, `image: "https://example.com/poll.png"`, using `CROSSMINT_API_KEY` for auth
+2. Extracts the `actionId` from the mint response
+3. Polls `GET https://staging.crossmint.com/api/2022-06-09/actions/<actionId>` every 2 seconds, up to a maximum of 5 attempts, until the action status is not `"pending"`
+4. Writes the final result to `/home/user/poll_result.json` with these fields:
+   - `actionId`: the ID string (or `"mock-action-id"` if credentials are absent)
+   - `final_status`: the last observed status string (or `"unknown"` if not retrieved)
+   - `poll_attempts`: number of polling attempts made (integer)
+   - `mint_chain`: `"polygon-amoy"`
+
+Handle errors gracefully — if any API call fails, write the log with whatever fields are available plus an `error` field.
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+Exception AgentTimeoutError is in exclude_exceptions, not retrying
+Not retrying trial because the exception is not in include_exceptions or the maximum number of retries has been reached
+Exception AgentTimeoutError is in exclude_exceptions, not retrying
+Not retrying trial because the exception is not in include_exceptions or the maximum number of retries has been reached

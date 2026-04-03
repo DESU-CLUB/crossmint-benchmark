@@ -1,0 +1,122 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 10,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775191545.2232976,
+            "stop": 1775191545.737766
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_treasury_module_exists",
+                "status": "passed",
+                "duration": 0.00029393110889941454,
+                "start": 1775191545.2324388,
+                "stop": 1775191545.2328715,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_wallets_sdk",
+                "status": "passed",
+                "duration": 0.00025874993298202753,
+                "start": 1775191545.233014,
+                "stop": 1775191545.2333622,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_exports_execute_function",
+                "status": "passed",
+                "duration": 0.00022323010489344597,
+                "start": 1775191545.2334673,
+                "stop": 1775191545.2337666,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_minting_api",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0003455801634117961,
+                "start": 1775191545.2338645,
+                "stop": 1775191545.244607,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_treasury_uses_crossmint_minting_api():\n        with open(TREASURY_PATH) as f:\n            content = f.read()\n>       assert \"staging.crossmint.com\" in content, (\n            \"treasury.js must reference staging.crossmint.com for API calls.\"\n        )\nE       AssertionError: treasury.js must reference staging.crossmint.com for API calls.\nE       assert 'staging.crossmint.com' in 'const { CrossmintWalletsSDK } = require(\"@crossmint/wallets-sdk\");\\n\\nlet cachedSdk = null;\\n\\nfunction getEnv(name) ...eturn { success: false, error: error?.message || String(error) };\\n  }\\n}\\n\\nmodule.exports = executeTreasuryAction;\\n'\n\n/tests/test_final_state.py:38: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_test_harness_exists",
+                "status": "passed",
+                "duration": 0.00023376091849058867,
+                "start": 1775191545.2447345,
+                "stop": 1775191545.2450516,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_harness_runs_successfully",
+                "status": "passed",
+                "duration": 0.49018894403707236,
+                "start": 1775191545.2451513,
+                "stop": 1775191545.7355037,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_file_exists",
+                "status": "passed",
+                "duration": 0.00026336999144405127,
+                "start": 1775191545.735689,
+                "stop": 1775191545.7360432,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_valid_json",
+                "status": "passed",
+                "duration": 0.0002562800655141473,
+                "start": 1775191545.7361526,
+                "stop": 1775191545.7364876,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_array_of_three",
+                "status": "passed",
+                "duration": 0.0002245800569653511,
+                "start": 1775191545.7365882,
+                "stop": 1775191545.736886,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_have_required_fields",
+                "status": "passed",
+                "duration": 0.00022387003991752863,
+                "start": 1775191545.7369883,
+                "stop": 1775191545.7372868,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_cover_all_action_types",
+                "status": "passed",
+                "duration": 0.0002139100106433034,
+                "start": 1775191545.73738,
+                "stop": 1775191545.7376604,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

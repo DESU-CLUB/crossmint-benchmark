@@ -1,0 +1,110 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 9,
+            "passed": 6,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775191521.0524807,
+            "stop": 1775191521.1063023
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_airdrop_script_exists",
+                "status": "passed",
+                "duration": 0.00030770013108849525,
+                "start": 1775191521.0610657,
+                "stop": 1775191521.0615158,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_api",
+                "status": "passed",
+                "duration": 0.00026446161791682243,
+                "start": 1775191521.0616422,
+                "stop": 1775191521.0619938,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_reads_recipients_file",
+                "status": "passed",
+                "duration": 0.00021729012951254845,
+                "start": 1775191521.0620983,
+                "stop": 1775191521.062389,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.02675926312804222,
+                "start": 1775191521.0624852,
+                "stop": 1775191521.1003633,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_runs_successfully():\n        result = subprocess.run(\n            [\"node\", SCRIPT_PATH],\n            capture_output=True,\n            text=True,\n            cwd=HOME_DIR,\n            timeout=60,\n        )\n>       assert result.returncode == 0, (\n            f\"node airdrop.js failed: {result.stderr}\"\n        )\nE       AssertionError: node airdrop.js failed: Error: CROSSMINT_API_KEY environment variable is required\nE             at main (/home/user/airdrop.js:50:11)\nE             at Object.<anonymous> (/home/user/airdrop.js:81:1)\nE             at Module._compile (node:internal/modules/cjs/loader:1521:14)\nE             at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\nE             at Module.load (node:internal/modules/cjs/loader:1266:32)\nE             at Module._load (node:internal/modules/cjs/loader:1091:12)\nE             at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\nE             at node:internal/main/run_main_module:28:49\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', '/home/user/airdrop.js'], returncode=1, stdout='', stderr='Error: CROSSMINT_API_KEY env...serEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\\n    at node:internal/main/run_main_module:28:49\\n').returncode\n\n/tests/test_final_state.py:39: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_file_exists",
+                "status": "passed",
+                "duration": 0.0002534501254558563,
+                "start": 1775191521.1005151,
+                "stop": 1775191521.100864,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_summary_is_valid_json",
+                "status": "passed",
+                "duration": 0.00024286983534693718,
+                "start": 1775191521.1009703,
+                "stop": 1775191521.1012888,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_summary_total_equals_three",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000308081042021513,
+                "start": 1775191521.101387,
+                "stop": 1775191521.1032524,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_total_equals_three():\n        with open(SUMMARY_PATH) as f:\n            data = json.load(f)\n        assert \"total\" in data, \"airdrop_summary.json must contain a 'total' field.\"\n>       assert data[\"total\"] == 3, (\n            f\"Expected total=3, got {data.get('total')}.\"\n        )\nE       AssertionError: Expected total=3, got 0.\nE       assert 0 == 3\n\n/tests/test_final_state.py:60: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_results_array_length",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00033765099942684174,
+                "start": 1775191521.103371,
+                "stop": 1775191521.105749,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_results_array_length():\n        with open(SUMMARY_PATH) as f:\n            data = json.load(f)\n        assert \"results\" in data, \"airdrop_summary.json must contain a 'results' field.\"\n        assert isinstance(data[\"results\"], list), \"results must be an array.\"\n>       assert len(data[\"results\"]) == 3, (\n            f\"Expected 3 results, got {len(data['results'])}.\"\n        )\nE       AssertionError: Expected 3 results, got 0.\nE       assert 0 == 3\nE        +  where 0 = len([])\n\n/tests/test_final_state.py:70: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_results_have_email_and_status",
+                "status": "passed",
+                "duration": 0.0002441098913550377,
+                "start": 1775191521.1058702,
+                "stop": 1775191521.1061926,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

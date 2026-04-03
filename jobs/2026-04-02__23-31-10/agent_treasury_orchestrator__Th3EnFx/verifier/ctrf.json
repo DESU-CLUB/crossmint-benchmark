@@ -1,0 +1,128 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 8,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775198023.3517113,
+            "stop": 1775198023.404599
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_treasury_module_exists",
+                "status": "passed",
+                "duration": 0.00030120089650154114,
+                "start": 1775198023.3609679,
+                "stop": 1775198023.3614147,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_wallets_sdk",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00037106999661773443,
+                "start": 1775198023.361538,
+                "stop": 1775198023.372346,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_treasury_uses_crossmint_wallets_sdk():\n        with open(TREASURY_PATH) as f:\n            content = f.read()\n>       assert \"@crossmint/wallets-sdk\" in content, (\n            \"treasury.js must import from @crossmint/wallets-sdk.\"\n        )\nE       AssertionError: treasury.js must import from @crossmint/wallets-sdk.\nE       assert '@crossmint/wallets-sdk' in \"const https = require('https');\\n\\nfunction doRequest(url, options, body) {\\n    return new Promise((resolve, reject)...\\n    }\\n}\\n\\nmodule.exports = executeTreasuryAction;\\nmodule.exports.executeTreasuryAction = executeTreasuryAction;\\n\"\n\n/tests/test_final_state.py:19: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_exports_execute_function",
+                "status": "passed",
+                "duration": 0.00024878198746591806,
+                "start": 1775198023.3724782,
+                "stop": 1775198023.372813,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_minting_api",
+                "status": "passed",
+                "duration": 0.00022857100702822208,
+                "start": 1775198023.3729234,
+                "stop": 1775198023.3732321,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_test_harness_exists",
+                "status": "passed",
+                "duration": 0.0001905299723148346,
+                "start": 1775198023.3733308,
+                "stop": 1775198023.373591,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_harness_runs_successfully",
+                "status": "passed",
+                "duration": 0.02466873696539551,
+                "start": 1775198023.3736835,
+                "stop": 1775198023.3984632,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_file_exists",
+                "status": "passed",
+                "duration": 0.0002114201197400689,
+                "start": 1775198023.3985934,
+                "stop": 1775198023.3988807,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_valid_json",
+                "status": "passed",
+                "duration": 0.00024567986838519573,
+                "start": 1775198023.3989835,
+                "stop": 1775198023.3993037,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_array_of_three",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0004123197868466377,
+                "start": 1775198023.3994,
+                "stop": 1775198023.4019427,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_is_array_of_three():\n        with open(RESULTS_PATH) as f:\n            data = json.load(f)\n        assert isinstance(data, list), \"treasury_test_results.json must be a JSON array.\"\n>       assert len(data) == 3, (\n            f\"Expected 3 results (one per action type), got {len(data)}.\"\n        )\nE       AssertionError: Expected 3 results (one per action type), got 4.\nE       assert 4 == 3\nE        +  where 4 = len([{'action_type': 'create_wallet', 'result': {'address': '0x1234567890123456789012345678901234567890', 'chain': 'polygo...9', 'success': True}}, {'action_type': 'unknown_action', 'result': {'error': 'Unknown action type', 'success': False}}])\n\n/tests/test_final_state.py:76: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_results_have_required_fields",
+                "status": "passed",
+                "duration": 0.0002493310021236539,
+                "start": 1775198023.402066,
+                "stop": 1775198023.4024017,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_cover_all_action_types",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00037387991324067116,
+                "start": 1775198023.4025028,
+                "stop": 1775198023.4044864,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_cover_all_action_types():\n        with open(RESULTS_PATH) as f:\n            data = json.load(f)\n        action_types = {item[\"action_type\"] for item in data}\n        expected = {\"create_wallet\", \"check_balance\", \"mint_receipt\"}\n>       assert expected == action_types, (\n            f\"Expected action types {expected}, got {action_types}.\"\n        )\nE       AssertionError: Expected action types {'check_balance', 'create_wallet', 'mint_receipt'}, got {'check_balance', 'create_wallet', 'mint_receipt', 'unknown_action'}.\nE       assert {'check_balan...mint_receipt'} == {'check_balan...known_action'}\nE         \nE         Extra items in the right set:\nE         'unknown_action'\nE         Use -v to get more diff\n\n/tests/test_final_state.py:94: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
