@@ -1,0 +1,131 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 7,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775245844.788386,
+            "stop": 1775245844.95136
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_treasury_module_exists",
+                "status": "passed",
+                "duration": 0.0002968499902635813,
+                "start": 1775245844.797588,
+                "stop": 1775245844.7980413,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_wallets_sdk",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0003717599902302027,
+                "start": 1775245844.7981663,
+                "stop": 1775245844.8089962,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_treasury_uses_crossmint_wallets_sdk():\n        with open(TREASURY_PATH) as f:\n            content = f.read()\n>       assert \"@crossmint/wallets-sdk\" in content, (\n            \"treasury.js must import from @crossmint/wallets-sdk.\"\n        )\nE       AssertionError: treasury.js must import from @crossmint/wallets-sdk.\nE       assert '@crossmint/wallets-sdk' in \"const https = require('https');\\n\\n// Helper function to make HTTP requests (fallback for environments without global...or) {\\n        return { success: false, error: error.message };\\n    }\\n}\\n\\nmodule.exports = executeTreasuryAction;\\n\"\n\n/tests/test_final_state.py:19: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_exports_execute_function",
+                "status": "passed",
+                "duration": 0.0002466707956045866,
+                "start": 1775245844.8091238,
+                "stop": 1775245844.8094554,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_minting_api",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00030831992626190186,
+                "start": 1775245844.809558,
+                "stop": 1775245844.8116848,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_treasury_uses_crossmint_minting_api():\n        with open(TREASURY_PATH) as f:\n            content = f.read()\n>       assert \"staging.crossmint.com\" in content, (\n            \"treasury.js must reference staging.crossmint.com for API calls.\"\n        )\nE       AssertionError: treasury.js must reference staging.crossmint.com for API calls.\nE       assert 'staging.crossmint.com' in \"const https = require('https');\\n\\n// Helper function to make HTTP requests (fallback for environments without global...or) {\\n        return { success: false, error: error.message };\\n    }\\n}\\n\\nmodule.exports = executeTreasuryAction;\\n\"\n\n/tests/test_final_state.py:38: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_test_harness_exists",
+                "status": "passed",
+                "duration": 0.00023131025955080986,
+                "start": 1775245844.8118052,
+                "stop": 1775245844.8121216,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_harness_runs_successfully",
+                "status": "passed",
+                "duration": 0.13261061906814575,
+                "start": 1775245844.8122218,
+                "stop": 1775245844.9450114,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_file_exists",
+                "status": "passed",
+                "duration": 0.00024977000430226326,
+                "start": 1775245844.9452014,
+                "stop": 1775245844.9455388,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_valid_json",
+                "status": "passed",
+                "duration": 0.00026359991170465946,
+                "start": 1775245844.9456441,
+                "stop": 1775245844.9460065,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_array_of_three",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00044005108065903187,
+                "start": 1775245844.94611,
+                "stop": 1775245844.9486458,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_is_array_of_three():\n        with open(RESULTS_PATH) as f:\n            data = json.load(f)\n        assert isinstance(data, list), \"treasury_test_results.json must be a JSON array.\"\n>       assert len(data) == 3, (\n            f\"Expected 3 results (one per action type), got {len(data)}.\"\n        )\nE       AssertionError: Expected 3 results (one per action type), got 4.\nE       assert 4 == 3\nE        +  where 4 = len([{'action_type': 'create_wallet', 'result': {'address': '0xMockAddress', 'chain': 'polygon', 'success': True, 'userId'...9', 'success': True}}, {'action_type': 'unknown_action', 'result': {'error': 'Unknown action type', 'success': False}}])\n\n/tests/test_final_state.py:76: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_results_have_required_fields",
+                "status": "passed",
+                "duration": 0.0002604811452329159,
+                "start": 1775245844.948767,
+                "stop": 1775245844.9491198,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_cover_all_action_types",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00037975097075104713,
+                "start": 1775245844.9492257,
+                "stop": 1775245844.9512367,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_cover_all_action_types():\n        with open(RESULTS_PATH) as f:\n            data = json.load(f)\n        action_types = {item[\"action_type\"] for item in data}\n        expected = {\"create_wallet\", \"check_balance\", \"mint_receipt\"}\n>       assert expected == action_types, (\n            f\"Expected action types {expected}, got {action_types}.\"\n        )\nE       AssertionError: Expected action types {'check_balance', 'create_wallet', 'mint_receipt'}, got {'unknown_action', 'create_wallet', 'mint_receipt', 'check_balance'}.\nE       assert {'check_balan...mint_receipt'} == {'check_balan...known_action'}\nE         \nE         Extra items in the right set:\nE         'unknown_action'\nE         Use -v to get more diff\n\n/tests/test_final_state.py:94: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

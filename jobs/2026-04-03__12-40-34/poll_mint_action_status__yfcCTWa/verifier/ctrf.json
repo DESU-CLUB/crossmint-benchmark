@@ -1,0 +1,119 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 11,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775245377.219337,
+            "stop": 1775245380.632079
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_exists",
+                "status": "passed",
+                "duration": 0.00032454286701977253,
+                "start": 1775245377.228613,
+                "stop": 1775245377.2290776,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_minting_api",
+                "status": "passed",
+                "duration": 0.00026853219605982304,
+                "start": 1775245377.2292013,
+                "stop": 1775245377.2295566,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_action_status_api",
+                "status": "passed",
+                "duration": 0.00023488164879381657,
+                "start": 1775245377.2296617,
+                "stop": 1775245377.22997,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_implements_polling",
+                "status": "passed",
+                "duration": 0.00023293308913707733,
+                "start": 1775245377.2300751,
+                "stop": 1775245377.2303813,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "passed",
+                "duration": 3.3977840850129724,
+                "start": 1775245377.2304747,
+                "stop": 1775245380.6285233,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_poll_result_exists",
+                "status": "passed",
+                "duration": 0.000655994052067399,
+                "start": 1775245380.6289062,
+                "stop": 1775245380.6297736,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_poll_result_is_valid_json",
+                "status": "passed",
+                "duration": 0.0002702518831938505,
+                "start": 1775245380.630029,
+                "stop": 1775245380.6303754,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_poll_result_action_id_field",
+                "status": "passed",
+                "duration": 0.00023526023142039776,
+                "start": 1775245380.6304746,
+                "stop": 1775245380.6307843,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_poll_result_final_status_field",
+                "status": "passed",
+                "duration": 0.00024217111058533192,
+                "start": 1775245380.6308808,
+                "stop": 1775245380.631197,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_poll_result_poll_attempts_field",
+                "status": "passed",
+                "duration": 0.0002250701654702425,
+                "start": 1775245380.6312919,
+                "stop": 1775245380.6315863,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_poll_result_mint_chain_field",
+                "status": "passed",
+                "duration": 0.0002217399887740612,
+                "start": 1775245380.6316772,
+                "stop": 1775245380.6319625,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

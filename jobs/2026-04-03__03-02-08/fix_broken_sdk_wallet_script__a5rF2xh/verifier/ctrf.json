@@ -1,0 +1,101 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 9,
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775211887.1966376,
+            "stop": 1775211893.0459569
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_fixed_script_no_underscore_chain",
+                "status": "passed",
+                "duration": 0.0003353401552885771,
+                "start": 1775211887.2045248,
+                "stop": 1775211887.2050047,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_uses_correct_chain",
+                "status": "passed",
+                "duration": 0.00024488894268870354,
+                "start": 1775211887.2051282,
+                "stop": 1775211887.2054572,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_uses_server_recovery",
+                "status": "passed",
+                "duration": 0.0002223693300038576,
+                "start": 1775211887.205561,
+                "stop": 1775211887.2058663,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_runs_successfully",
+                "status": "passed",
+                "duration": 5.833718587178737,
+                "start": 1775211887.205964,
+                "stop": 1775211893.0399497,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_debug_result_exists",
+                "status": "passed",
+                "duration": 0.0006540692411363125,
+                "start": 1775211893.040351,
+                "stop": 1775211893.0412688,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_debug_result_is_valid_json",
+                "status": "passed",
+                "duration": 0.0006981890182942152,
+                "start": 1775211893.0415382,
+                "stop": 1775211893.0424697,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_wallet_debug_result_chain",
+                "status": "passed",
+                "duration": 0.0006527591031044722,
+                "start": 1775211893.0427644,
+                "stop": 1775211893.043612,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_debug_notes_exist",
+                "status": "passed",
+                "duration": 0.0005056099034845829,
+                "start": 1775211893.0439322,
+                "stop": 1775211893.0446103,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_debug_notes_contain_bug_and_fix",
+                "status": "passed",
+                "duration": 0.0005560689605772495,
+                "start": 1775211893.0449054,
+                "stop": 1775211893.0456305,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

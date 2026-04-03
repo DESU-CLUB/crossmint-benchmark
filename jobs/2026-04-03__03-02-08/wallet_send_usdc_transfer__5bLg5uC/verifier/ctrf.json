@@ -1,0 +1,128 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775211876.3910692,
+            "stop": 1775211884.6882966
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_transfer_script_exists",
+                "status": "passed",
+                "duration": 0.00029828096739947796,
+                "start": 1775211876.401025,
+                "stop": 1775211876.4014616,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_wallets_sdk",
+                "status": "passed",
+                "duration": 0.00025671999901533127,
+                "start": 1775211876.4015899,
+                "stop": 1775211876.4019337,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_references_usdc_contract",
+                "status": "passed",
+                "duration": 0.00021978991571813822,
+                "start": 1775211876.4020376,
+                "stop": 1775211876.4023309,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "passed",
+                "duration": 8.28224201197736,
+                "start": 1775211876.4024284,
+                "stop": 1775211884.6848667,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_exists",
+                "status": "passed",
+                "duration": 0.00025200098752975464,
+                "start": 1775211884.6850638,
+                "stop": 1775211884.6854014,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_is_valid_json",
+                "status": "passed",
+                "duration": 0.0002923599677160382,
+                "start": 1775211884.6855059,
+                "stop": 1775211884.6858902,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_sender_chain",
+                "status": "passed",
+                "duration": 0.00022335106041282415,
+                "start": 1775211884.6859934,
+                "stop": 1775211884.6862888,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_receiver_chain",
+                "status": "passed",
+                "duration": 0.000242499983869493,
+                "start": 1775211884.686385,
+                "stop": 1775211884.686712,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_amount",
+                "status": "passed",
+                "duration": 0.00021484994795173407,
+                "start": 1775211884.6868067,
+                "stop": 1775211884.6870906,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_token",
+                "status": "passed",
+                "duration": 0.00020883989054709673,
+                "start": 1775211884.687183,
+                "stop": 1775211884.687458,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_addresses",
+                "status": "passed",
+                "duration": 0.0002145699691027403,
+                "start": 1775211884.6875455,
+                "stop": 1775211884.6878269,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_status",
+                "status": "passed",
+                "duration": 0.0002113898517563939,
+                "start": 1775211884.687916,
+                "stop": 1775211884.6881895,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

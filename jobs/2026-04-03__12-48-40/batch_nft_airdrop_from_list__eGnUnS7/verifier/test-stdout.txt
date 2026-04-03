@@ -1,0 +1,108 @@
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 https://deb.nodesource.com/node_20.x nodistro InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (8.5.0-2ubuntu10.8).
+0 upgraded, 0 newly installed, 0 to remove and 10 not upgraded.
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 6 packages in 18ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 9 items
+
+../tests/test_final_state.py ...FFFFFF                                   [100%]
+
+=================================== FAILURES ===================================
+________________________ test_script_runs_successfully _________________________
+
+    def test_script_runs_successfully():
+        result = subprocess.run(
+            ["node", SCRIPT_PATH],
+            capture_output=True,
+            text=True,
+            cwd=HOME_DIR,
+            timeout=60,
+        )
+>       assert result.returncode == 0, (
+            f"node airdrop.js failed: {result.stderr}"
+        )
+E       AssertionError: node airdrop.js failed: Failed to read recipients.json: Unexpected end of JSON input
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', '/home/user/airdrop.js'], returncode=1, stdout='', stderr='Failed to read recipients.json: Unexpected end of JSON input\n').returncode
+
+/tests/test_final_state.py:39: AssertionError
+___________________________ test_summary_file_exists ___________________________
+
+    def test_summary_file_exists():
+>       assert os.path.isfile(SUMMARY_PATH), f"airdrop_summary.json not found at {SUMMARY_PATH}."
+E       AssertionError: airdrop_summary.json not found at /home/user/airdrop_summary.json.
+E       assert False
+E        +  where False = <function isfile at 0x78806136c220>('/home/user/airdrop_summary.json')
+E        +    where <function isfile at 0x78806136c220> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+/tests/test_final_state.py:45: AssertionError
+__________________________ test_summary_is_valid_json __________________________
+
+    def test_summary_is_valid_json():
+>       with open(SUMMARY_PATH) as f:
+             ^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'
+
+/tests/test_final_state.py:49: FileNotFoundError
+_______________________ test_summary_total_equals_three ________________________
+
+    def test_summary_total_equals_three():
+>       with open(SUMMARY_PATH) as f:
+             ^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'
+
+/tests/test_final_state.py:57: FileNotFoundError
+______________________ test_summary_results_array_length _______________________
+
+    def test_summary_results_array_length():
+>       with open(SUMMARY_PATH) as f:
+             ^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'
+
+/tests/test_final_state.py:66: FileNotFoundError
+__________________ test_summary_results_have_email_and_status __________________
+
+    def test_summary_results_have_email_and_status():
+>       with open(SUMMARY_PATH) as f:
+             ^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'
+
+/tests/test_final_state.py:76: FileNotFoundError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_final_state.py::test_airdrop_script_exists
+PASSED ../tests/test_final_state.py::test_script_uses_crossmint_api
+PASSED ../tests/test_final_state.py::test_script_reads_recipients_file
+FAILED ../tests/test_final_state.py::test_script_runs_successfully - Assertio...
+FAILED ../tests/test_final_state.py::test_summary_file_exists - AssertionErro...
+FAILED ../tests/test_final_state.py::test_summary_is_valid_json - FileNotFoun...
+FAILED ../tests/test_final_state.py::test_summary_total_equals_three - FileNo...
+FAILED ../tests/test_final_state.py::test_summary_results_array_length - File...
+FAILED ../tests/test_final_state.py::test_summary_results_have_email_and_status
+========================= 6 failed, 3 passed in 0.06s ==========================

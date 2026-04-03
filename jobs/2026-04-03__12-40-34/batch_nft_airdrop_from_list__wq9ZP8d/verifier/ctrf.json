@@ -1,0 +1,119 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 9,
+            "passed": 3,
+            "failed": 6,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775245340.1923146,
+            "stop": 1775245340.2548056
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_airdrop_script_exists",
+                "status": "passed",
+                "duration": 0.0003111311234533787,
+                "start": 1775245340.2008934,
+                "stop": 1775245340.201345,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_api",
+                "status": "passed",
+                "duration": 0.0002841106615960598,
+                "start": 1775245340.2014732,
+                "stop": 1775245340.2018468,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_reads_recipients_file",
+                "status": "passed",
+                "duration": 0.0002572406083345413,
+                "start": 1775245340.2019584,
+                "stop": 1775245340.2022946,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.030098660849034786,
+                "start": 1775245340.2023935,
+                "stop": 1775245340.2458637,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_runs_successfully():\n        result = subprocess.run(\n            [\"node\", SCRIPT_PATH],\n            capture_output=True,\n            text=True,\n            cwd=HOME_DIR,\n            timeout=60,\n        )\n>       assert result.returncode == 0, (\n            f\"node airdrop.js failed: {result.stderr}\"\n        )\nE       AssertionError: node airdrop.js failed: SyntaxError: Unexpected end of JSON input\nE             at JSON.parse (<anonymous>)\nE             at loadRecipients (/home/user/airdrop.js:13:23)\nE             at async run (/home/user/airdrop.js:57:22)\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', '/home/user/airdrop.js'], returncode=1, stdout='', stderr='SyntaxError: Unexpected end ... (<anonymous>)\\n    at loadRecipients (/home/user/airdrop.js:13:23)\\n    at async run (/home/user/airdrop.js:57:22)\\n').returncode\n\n/tests/test_final_state.py:39: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_file_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00034421123564243317,
+                "start": 1775245340.2460108,
+                "stop": 1775245340.2477875,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_file_exists():\n>       assert os.path.isfile(SUMMARY_PATH), f\"airdrop_summary.json not found at {SUMMARY_PATH}.\"\nE       AssertionError: airdrop_summary.json not found at /home/user/airdrop_summary.json.\nE       assert False\nE        +  where False = <function isfile at 0x705631fbc220>('/home/user/airdrop_summary.json')\nE        +    where <function isfile at 0x705631fbc220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\n/tests/test_final_state.py:45: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_is_valid_json",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00024446146562695503,
+                "start": 1775245340.2479043,
+                "stop": 1775245340.2498424,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_is_valid_json():\n>       with open(SUMMARY_PATH) as f:\n             ^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'\n\n/tests/test_final_state.py:49: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_final_state.py::test_summary_total_equals_three",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00024095922708511353,
+                "start": 1775245340.249959,
+                "stop": 1775245340.2514606,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_total_equals_three():\n>       with open(SUMMARY_PATH) as f:\n             ^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'\n\n/tests/test_final_state.py:57: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_final_state.py::test_summary_results_array_length",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000247761607170105,
+                "start": 1775245340.2515738,
+                "stop": 1775245340.253072,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_results_array_length():\n>       with open(SUMMARY_PATH) as f:\n             ^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'\n\n/tests/test_final_state.py:66: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            },
+            {
+                "name": "test_final_state.py::test_summary_results_have_email_and_status",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0002509700134396553,
+                "start": 1775245340.2531865,
+                "stop": 1775245340.2546895,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_results_have_email_and_status():\n>       with open(SUMMARY_PATH) as f:\n             ^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/airdrop_summary.json'\n\n/tests/test_final_state.py:76: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

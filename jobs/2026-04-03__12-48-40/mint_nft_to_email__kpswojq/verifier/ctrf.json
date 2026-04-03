@@ -1,0 +1,101 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 9,
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775245805.9814527,
+            "stop": 1775245806.6629024
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_mint_script_exists",
+                "status": "passed",
+                "duration": 0.000292380980681628,
+                "start": 1775245805.9889307,
+                "stop": 1775245805.9893606,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_staging_api",
+                "status": "passed",
+                "duration": 0.00025347000337205827,
+                "start": 1775245805.9894838,
+                "stop": 1775245805.9898262,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_sets_recipient",
+                "status": "passed",
+                "duration": 0.00022123100643511862,
+                "start": 1775245805.9899323,
+                "stop": 1775245805.9902287,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_sets_nft_name",
+                "status": "passed",
+                "duration": 0.00021041100262664258,
+                "start": 1775245805.990327,
+                "stop": 1775245805.9906068,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_sets_api_key_header",
+                "status": "passed",
+                "duration": 0.00021836099040228873,
+                "start": 1775245805.9906995,
+                "stop": 1775245805.9909887,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "passed",
+                "duration": 0.6700857549876673,
+                "start": 1775245805.9910781,
+                "stop": 1775245806.661334,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_mint_response_file_exists",
+                "status": "passed",
+                "duration": 0.0002844010014086962,
+                "start": 1775245806.6615267,
+                "stop": 1775245806.6619046,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_mint_response_is_valid_json",
+                "status": "passed",
+                "duration": 0.00026535100187174976,
+                "start": 1775245806.662019,
+                "stop": 1775245806.6623666,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_mint_response_written_by_script",
+                "status": "passed",
+                "duration": 0.0002443910052534193,
+                "start": 1775245806.6624708,
+                "stop": 1775245806.6627848,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

@@ -189,14 +189,19 @@ async function main() {
 
   const outputPath = path.join(siteRoot, '../.zealt/tasks.json');
   const pendingTasksOutputPath = path.join(siteRoot, '../.zealt/pending-tasks.json');
-  
-  await fs.writeFile(outputPath, JSON.stringify(tasks, null, 2));
-  await fs.writeFile(
-    pendingTasksOutputPath,
-    JSON.stringify({ 'pending-tasks': pendingSampleCases }, null, 2),
-  );
-  console.log(`Computed ${Object.keys(tasks).length} tasks into ${outputPath}`);
-  console.log(`Computed ${pendingSampleCases} pending sample cases into ${pendingTasksOutputPath}`);
+  const siteOutputPath = path.join(siteRoot, 'zealt/tasks.json');
+  const sitePendingTasksOutputPath = path.join(siteRoot, 'zealt/pending-tasks.json');
+
+  const tasksJson = JSON.stringify(tasks, null, 2);
+  const pendingTasksJson = JSON.stringify({ 'pending-tasks': pendingSampleCases }, null, 2);
+
+  await fs.writeFile(outputPath, tasksJson);
+  await fs.writeFile(pendingTasksOutputPath, pendingTasksJson);
+  await fs.writeFile(siteOutputPath, tasksJson);
+  await fs.writeFile(sitePendingTasksOutputPath, pendingTasksJson);
+
+  console.log(`Computed ${Object.keys(tasks).length} tasks into ${outputPath} and ${siteOutputPath}`);
+  console.log(`Computed ${pendingSampleCases} pending sample cases into ${pendingTasksOutputPath} and ${sitePendingTasksOutputPath}`);
 }
 
 main().catch(console.error);

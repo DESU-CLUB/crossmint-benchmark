@@ -1,0 +1,101 @@
+{
+    "id": "89691f40-71db-47ef-832d-6c968e2fc552",
+    "task_name": "fix_broken_sdk_wallet_script",
+    "trial_name": "fix_broken_sdk_wallet_script__Xg2fJaJ",
+    "trial_uri": "file:///Users/warrenlow/Documents/projects/pochi-harbor/jobs/2026-04-03__12-40-34/fix_broken_sdk_wallet_script__Xg2fJaJ",
+    "task_id": {
+        "path": "crossmint-tasks/fix_broken_sdk_wallet_script"
+    },
+    "source": "crossmint-tasks",
+    "task_checksum": "a2f64ebbf9c8076246b33529f29d86e1f4a181afbf0cfb0920de43ff79400edb",
+    "config": {
+        "task": {
+            "path": "crossmint-tasks/fix_broken_sdk_wallet_script",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "crossmint-tasks"
+        },
+        "trial_name": "fix_broken_sdk_wallet_script__Xg2fJaJ",
+        "trials_dir": "jobs/2026-04-03__12-40-34",
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": null,
+            "import_path": "agents.pochi:Pochi",
+            "model_name": "openai/gpt-5.2-codex",
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "kwargs": {},
+            "env": {}
+        },
+        "environment": {
+            "type": "daytona",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "suppress_override_warnings": false,
+            "mounts_json": null,
+            "env": {},
+            "kwargs": {}
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "job_id": "9f342526-eb2e-4318-b51d-db3d7a506ee8"
+    },
+    "agent_info": {
+        "name": "pochi",
+        "version": "0.6.6",
+        "model_info": {
+            "name": "gpt-5.2-codex",
+            "provider": "openai"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 0,
+        "n_cache_tokens": 0,
+        "n_output_tokens": 53115,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "exception_info": null,
+    "started_at": "2026-04-03T19:40:56.670647Z",
+    "finished_at": "2026-04-03T19:44:07.608144Z",
+    "environment_setup": {
+        "started_at": "2026-04-03T19:40:56.672446Z",
+        "finished_at": "2026-04-03T19:41:03.042088Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-04-03T19:41:03.042110Z",
+        "finished_at": "2026-04-03T19:41:25.301965Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-04-03T19:41:25.302104Z",
+        "finished_at": "2026-04-03T19:43:28.407902Z"
+    },
+    "verifier": {
+        "started_at": "2026-04-03T19:43:48.358011Z",
+        "finished_at": "2026-04-03T19:44:04.702319Z"
+    }
+}

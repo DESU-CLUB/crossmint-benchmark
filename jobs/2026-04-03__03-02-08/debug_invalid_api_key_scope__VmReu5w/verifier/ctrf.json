@@ -1,0 +1,98 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 8,
+            "passed": 6,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775211849.3940709,
+            "stop": 1775211849.6065927
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_fixed_script_no_client_key_prefix",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006472542881965637,
+                "start": 1775211849.401104,
+                "stop": 1775211849.412241,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_fixed_script_no_client_key_prefix():\n        with open(SCRIPT_PATH) as f:\n            content = f.read()\n>       assert \"ck_\" not in content, (\n            \"broken_mint.js must not contain 'ck_' client-side key prefix after fix.\"\n        )\nE       AssertionError: broken_mint.js must not contain 'ck_' client-side key prefix after fix.\nE       assert 'ck_' not in 'const fetch...\\nmintNFT();'\nE         \nE         'ck_' is contained here:\nE           ent-side (ck_)\nE         ?           +++\nE           const API_BASE_URL = 'https://staging.crossmint.com/api/'; // Fixed: Correct staging base URL\nE           \nE           // NFT metadata...\nE         \nE         ...Full output truncated (38 lines hidden), use '-vv' to show\n\n/tests/test_final_state.py:14: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_no_pipe_separator",
+                "status": "passed",
+                "duration": 0.00030138157308101654,
+                "start": 1775211849.4123812,
+                "stop": 1775211849.4127882,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_correct_recipient_format",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00032849283888936043,
+                "start": 1775211849.4128973,
+                "stop": 1775211849.4144857,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_fixed_script_correct_recipient_format():\n        with open(SCRIPT_PATH) as f:\n            content = f.read()\n>       assert \"email:test@example.com:polygon-amoy\" in content, (\n            \"broken_mint.js must use correct colon-separated recipient 'email:test@example.com:polygon-amoy'.\"\n        )\nE       AssertionError: broken_mint.js must use correct colon-separated recipient 'email:test@example.com:polygon-amoy'.\nE       assert 'email:test@example.com:polygon-amoy' in \"const fetch = require('node-fetch');\\n\\n// Configuration\\nconst API_KEY = 'sk_test_1234567890abcdef'; // Fixed: Using...(0);\\n  } catch (error) {\\n    console.error('Error minting NFT:', error);\\n    process.exit(1);\\n  }\\n}\\n\\nmintNFT();\"\n\n/tests/test_final_state.py:30: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_correct_url",
+                "status": "passed",
+                "duration": 0.00024901097640395164,
+                "start": 1775211849.4146068,
+                "stop": 1775211849.414939,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_has_image_field",
+                "status": "passed",
+                "duration": 0.00021853158250451088,
+                "start": 1775211849.4150407,
+                "stop": 1775211849.4153326,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_script_runs_successfully",
+                "status": "passed",
+                "duration": 0.1899022371508181,
+                "start": 1775211849.415434,
+                "stop": 1775211849.60551,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_response_exists",
+                "status": "passed",
+                "duration": 0.0002492419444024563,
+                "start": 1775211849.6056988,
+                "stop": 1775211849.6060355,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_fixed_response_is_valid_json",
+                "status": "passed",
+                "duration": 0.0002627931535243988,
+                "start": 1775211849.6061385,
+                "stop": 1775211849.6064737,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

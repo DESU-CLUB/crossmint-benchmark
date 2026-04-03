@@ -1,0 +1,125 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 11,
+            "passed": 9,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775211912.045466,
+            "stop": 1775211913.3562863
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_treasury_module_exists",
+                "status": "passed",
+                "duration": 0.0003028998617082834,
+                "start": 1775211912.0546956,
+                "stop": 1775211912.0551462,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_wallets_sdk",
+                "status": "passed",
+                "duration": 0.0002580301370471716,
+                "start": 1775211912.0552814,
+                "stop": 1775211912.0556242,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_exports_execute_function",
+                "status": "passed",
+                "duration": 0.00023785093799233437,
+                "start": 1775211912.055729,
+                "stop": 1775211912.0560448,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_treasury_uses_crossmint_minting_api",
+                "status": "passed",
+                "duration": 0.00022270996123552322,
+                "start": 1775211912.056142,
+                "stop": 1775211912.0564373,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_test_harness_exists",
+                "status": "passed",
+                "duration": 0.00018540106248110533,
+                "start": 1775211912.0565348,
+                "stop": 1775211912.0567882,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_harness_runs_successfully",
+                "status": "passed",
+                "duration": 1.2835314680123702,
+                "start": 1775211912.0568771,
+                "stop": 1775211913.3405805,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_file_exists",
+                "status": "passed",
+                "duration": 0.0002689119428396225,
+                "start": 1775211913.3407733,
+                "stop": 1775211913.3411307,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_valid_json",
+                "status": "passed",
+                "duration": 0.0002527800388634205,
+                "start": 1775211913.3412354,
+                "stop": 1775211913.3415623,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_is_array_of_three",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005293210269883275,
+                "start": 1775211913.3416617,
+                "stop": 1775211913.3535304,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_is_array_of_three():\n        with open(RESULTS_PATH) as f:\n            data = json.load(f)\n        assert isinstance(data, list), \"treasury_test_results.json must be a JSON array.\"\n>       assert len(data) == 3, (\n            f\"Expected 3 results (one per action type), got {len(data)}.\"\n        )\nE       AssertionError: Expected 3 results (one per action type), got 4.\nE       assert 4 == 3\nE        +  where 4 = len([{'action_type': 'create_wallet', 'result': {'chain': 'polygon-amoy', 'success': True, 'userId': 'test_user_001'}}, {'.../nfts\"}', 'success': False}}, {'action_type': 'unknown', 'result': {'error': 'Unknown action type', 'success': False}}])\n\n/tests/test_final_state.py:76: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_results_have_required_fields",
+                "status": "passed",
+                "duration": 0.0002682809717953205,
+                "start": 1775211913.3536587,
+                "stop": 1775211913.3540144,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_results_cover_all_action_types",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00039893994107842445,
+                "start": 1775211913.354122,
+                "stop": 1775211913.3561683,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_results_cover_all_action_types():\n        with open(RESULTS_PATH) as f:\n            data = json.load(f)\n        action_types = {item[\"action_type\"] for item in data}\n        expected = {\"create_wallet\", \"check_balance\", \"mint_receipt\"}\n>       assert expected == action_types, (\n            f\"Expected action types {expected}, got {action_types}.\"\n        )\nE       AssertionError: Expected action types {'mint_receipt', 'check_balance', 'create_wallet'}, got {'mint_receipt', 'unknown', 'check_balance', 'create_wallet'}.\nE       assert {'check_balan...mint_receipt'} == {'check_balan...t', 'unknown'}\nE         \nE         Extra items in the right set:\nE         'unknown'\nE         Use -v to get more diff\n\n/tests/test_final_state.py:94: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

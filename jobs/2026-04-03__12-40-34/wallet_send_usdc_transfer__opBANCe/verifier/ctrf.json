@@ -1,0 +1,131 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 12,
+            "passed": 11,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1775245369.0895872,
+            "stop": 1775245369.6765544
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_transfer_script_exists",
+                "status": "passed",
+                "duration": 0.0003389309858903289,
+                "start": 1775245369.100839,
+                "stop": 1775245369.1013434,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_uses_crossmint_wallets_sdk",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.00039591011591255665,
+                "start": 1775245369.101468,
+                "stop": 1775245369.112811,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_uses_crossmint_wallets_sdk():\n        with open(SCRIPT_PATH) as f:\n            content = f.read()\n        assert \"@crossmint/wallets-sdk\" in content, (\n            \"transfer_usdc.js must import from @crossmint/wallets-sdk.\"\n        )\n>       assert \"CrossmintWallets\" in content, (\n            \"transfer_usdc.js must use CrossmintWallets.\"\n        )\nE       AssertionError: transfer_usdc.js must use CrossmintWallets.\nE       assert 'CrossmintWallets' in 'const { createCrossmint } = require(\"@crossmint/wallets-sdk\");\\nconst fs = require(\"fs/promises\");\\n\\nconst CHAIN = \"...it fs.writeFile(\"/home/user/transfer_log.json\", JSON.stringify(fallbackLog, null, 2));\\n  console.error(error);\\n});\\n'\n\n/tests/test_final_state.py:22: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_script_references_usdc_contract",
+                "status": "passed",
+                "duration": 0.00025145092513412237,
+                "start": 1775245369.1129398,
+                "stop": 1775245369.1132774,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_script_runs_successfully",
+                "status": "passed",
+                "duration": 0.5289111089659855,
+                "start": 1775245369.1133811,
+                "stop": 1775245369.6424637,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_exists",
+                "status": "passed",
+                "duration": 0.000260561122559011,
+                "start": 1775245369.642667,
+                "stop": 1775245369.6430154,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_is_valid_json",
+                "status": "passed",
+                "duration": 0.0002854210324585438,
+                "start": 1775245369.6431215,
+                "stop": 1775245369.643489,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_sender_chain",
+                "status": "passed",
+                "duration": 0.0003282309044152498,
+                "start": 1775245369.673963,
+                "stop": 1775245369.674402,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_receiver_chain",
+                "status": "passed",
+                "duration": 0.0002489900216460228,
+                "start": 1775245369.674528,
+                "stop": 1775245369.6748555,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_amount",
+                "status": "passed",
+                "duration": 0.00022169004660099745,
+                "start": 1775245369.6749537,
+                "stop": 1775245369.6752453,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_token",
+                "status": "passed",
+                "duration": 0.00022427993826568127,
+                "start": 1775245369.6753476,
+                "stop": 1775245369.6756685,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_addresses",
+                "status": "passed",
+                "duration": 0.00022182997781783342,
+                "start": 1775245369.675775,
+                "stop": 1775245369.676067,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_transfer_log_status",
+                "status": "passed",
+                "duration": 0.00021721003577113152,
+                "start": 1775245369.6761603,
+                "stop": 1775245369.6764417,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}
