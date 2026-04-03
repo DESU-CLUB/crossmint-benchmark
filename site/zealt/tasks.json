@@ -1,1266 +1,741 @@
 {
-  "document_analytics_pipeline": {
-    "instruction": "# Distributed Document Processing and Analytics Pipeline on Modal\n\nYou are a platform engineer building a distributed document processing and analytics pipeline on Modal. The entire system must be implemented in a single file: `/home/user/modal_project/pipeline.py`.\n\n## System Requirements\n\nBuild a Modal App named `\"document-analytics-pipeline\"` with the following capabilities:\n\n### Scheduled Ingestion (Cron)\nThe pipeline must run on an **hourly cron schedule**. Each run processes a corpus of synthetic text documents.\n\n### Parallel Processing (Map/Starmap)\nProcess documents in parallel using Modal's `map` or `starmap`. For each document, perform NLP-style text analysis using **only Python's standard library**:\n- `word_count` — total number of words in the document\n- `sentence_count` — total number of sentences\n- `keywords` — extracted keywords (e.g., most frequent words)\n- `char_count` — total number of characters\n\n### Pipeline Authentication (Modal Secret)\nUse a **Modal Secret named `pipeline-credentials`** with key `PIPELINE_API_KEY=super-secret-pipeline-key` to validate the pipeline API key before processing.\n\n### Results Storage (Modal Dict)\nUse a **Modal Dict named `doc-analytics-output`** (with `create_if_missing=True`) to store all results. The Dict must contain:\n\n**Per-document entries** (at least 10 documents): Each document should be stored as a separate key (e.g., `doc_0`, `doc_1`, ..., `doc_9`) with a JSON value containing:\n- `word_count` — integer word count\n- `sentence_count` — integer sentence count\n- `keywords` — list of extracted keywords\n- `char_count` — integer character count\n\n**Summary entry**: A key named `summary` containing a JSON object with:\n- `total_documents` — the total number of documents processed\n- `total_words` — the sum of all word counts across documents\n- `avg_words_per_doc` — average words per document\n- `timestamp` — an ISO timestamp of when the pipeline ran\n\nThe Dict must contain at least **11 entries total** (10 documents + 1 summary).\n\n### Manual Trigger (Local Entrypoint)\nImplement a `@app.local_entrypoint()` that runs the full pipeline — processing at least 10 synthetic documents and storing results in the Dict.\n\n## Deployment Instructions\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` in your shell before running any Modal commands:\n\n```\nexport MODAL_ENVIRONMENT=modal-vsdatagen\n```\n\nDeploy the app:\n\n```\nmodal deploy /home/user/modal_project/pipeline.py\n```\n\nAfter deployment, trigger a manual run to populate the output Dict:\n\n```\nmodal run /home/user/modal_project/pipeline.py\n```\n\n**Do NOT use the `-e` CLI flag.** Always set `MODAL_ENVIRONMENT` as an environment variable instead.\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "document_analytics_pipeline__aKZJE6h",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 239.165,
-        "latency_breakdown": {
-          "env_setup": 12.06,
-          "agent_setup": 68.459,
-          "agent_exec": 120.006,
-          "verifier": 24.284
-        },
-        "tokens": {
-          "input": 0,
-          "output": 21800,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "document_analytics_pipeline__x9EoVH6",
-        "agent": "pochi",
-        "model": "google/gemini-3.1-pro",
-        "provider": "google",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 215.896,
-        "latency_breakdown": {
-          "env_setup": 2.035,
-          "agent_setup": 20.737,
-          "agent_exec": 158.701,
-          "verifier": 23.952
-        },
-        "tokens": {
-          "input": 0,
-          "output": 16691,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "document_analytics_pipeline__wp4zPw5",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 248.189,
-        "latency_breakdown": {
-          "env_setup": 5.337,
-          "agent_setup": 136.576,
-          "agent_exec": 72.68,
-          "verifier": 23.112
-        },
-        "tokens": {
-          "input": 0,
-          "output": 19517,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "document_analytics_pipeline__mDghYBC",
-        "agent": "pochi",
-        "model": "zai/glm-4.7",
-        "provider": "zai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 386.009,
-        "latency_breakdown": {
-          "env_setup": 1.764,
-          "agent_setup": 21.843,
-          "agent_exec": 327.541,
-          "verifier": 24.442
-        },
-        "tokens": {
-          "input": 0,
-          "output": 29924,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "document_analytics_pipeline__C5qyyQH",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex",
-        "provider": "openai",
-        "passed": false,
-        "reward": 0,
-        "error": false,
-        "latency_sec": 176.02,
-        "latency_breakdown": {
-          "env_setup": 4.083,
-          "agent_setup": 66.836,
-          "agent_exec": 79.127,
-          "verifier": 15.419
-        },
-        "tokens": {
-          "input": 0,
-          "output": 16081,
-          "cache": 0
-        }
-      }
-    ]
-  },
-  "modal_event_pipeline": {
-    "instruction": "# Event-Driven Processing Pipeline on Modal\n\nYou are a platform engineer building an internal event-driven data processing pipeline on Modal for your organization's tooling infrastructure. The entire system must be implemented in a single file: `/home/user/event_pipeline/app.py`.\n\n## System Requirements\n\nBuild a Modal App named `event-driven-pipeline` that operates as an end-to-end event buffering and processing system with the following capabilities:\n\n### Event Queue (Modal Queue)\nUse a **Modal Queue named `pipeline-events`** to buffer incoming data submissions between the web API layer and the backend worker. The queue should be referenced with `create_if_missing=True` so it is automatically provisioned when the app deploys.\n\n### Web API (FastAPI)\nExpose a web API using Modal's FastAPI integration (`@modal.fastapi_app()`) that provides at minimum:\n- A **submission endpoint** (POST) that accepts a JSON body containing a `data` field, enqueues the submission into the pipeline queue, records the event in the shared pipeline registry, and returns a confirmation response.\n- A **status endpoint** (GET) that reads the current pipeline state from the registry dict and returns it as JSON.\n\n### Pipeline Registry (Modal Dict)\nUse a **Modal Dict named `pipeline-registry`** (with `create_if_missing=True`) to maintain shared pipeline state. The registry must track at minimum:\n- A `total_submitted` counter that is incremented on each submission via the POST endpoint\n- A `total_processed` counter that reflects how many items have been successfully processed\n\n### Worker Function (Fault-Tolerant)\nImplement a worker function with **`retries=2`** that processes individual data items. For each item, compute a deterministic hash or checksum of the data string (e.g., using `hashlib`) and write the result to a **Modal Volume named `pipeline-artifacts`** (with `create_if_missing=True`) as a text file. The volume must be mounted inside the worker function.\n\n### Manual Trigger (Local Entrypoint)\nImplement a `@app.local_entrypoint()` that allows the pipeline to be exercised without the web API — it should enqueue 3 data items, invoke the worker to process them, and update the `total_processed` counter in the registry to `3`.\n\n## Deployment Instructions\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` in your shell before running any Modal commands:\n\n```\nexport MODAL_ENVIRONMENT=modal-vsdatagen\n```\n\nDeploy the app:\n\n```\nmodal deploy /home/user/event_pipeline/app.py\n```\n\nAfter deployment, trigger a manual run to populate the Volume and Dict:\n\n```\nmodal run /home/user/event_pipeline/app.py\n```\n\n**Do NOT use the `-e` CLI flag.** Always set `MODAL_ENVIRONMENT` as an environment variable instead.\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "modal_event_pipeline__SWEDVcm",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 354.399,
-        "latency_breakdown": {
-          "env_setup": 12.075,
-          "agent_setup": 91.368,
-          "agent_exec": 216.035,
-          "verifier": 24.385
-        },
-        "tokens": {
-          "input": 0,
-          "output": 27540,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "modal_event_pipeline__7oZARyg",
-        "agent": "pochi",
-        "model": "google/gemini-3.1-pro",
-        "provider": "google",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 239.817,
-        "latency_breakdown": {
-          "env_setup": 1.836,
-          "agent_setup": 20.701,
-          "agent_exec": 179.184,
-          "verifier": 27.353
-        },
-        "tokens": {
-          "input": 0,
-          "output": 21183,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "modal_event_pipeline__XQgLctq",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 230.064,
-        "latency_breakdown": {
-          "env_setup": 5.147,
-          "agent_setup": 125.457,
-          "agent_exec": 62.64,
-          "verifier": 26.347
-        },
-        "tokens": {
-          "input": 0,
-          "output": 18609,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "modal_event_pipeline__H5u8BUo",
-        "agent": "pochi",
-        "model": "zai/glm-4.7",
-        "provider": "zai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 329.649,
-        "latency_breakdown": {
-          "env_setup": 1.941,
-          "agent_setup": 23.088,
-          "agent_exec": 253.727,
-          "verifier": 40.429
-        },
-        "tokens": {
-          "input": 0,
-          "output": 24676,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "modal_event_pipeline__Twwzpoi",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex",
-        "provider": "openai",
-        "passed": false,
-        "reward": 0,
-        "error": false,
-        "latency_sec": 308.751,
-        "latency_breakdown": {
-          "env_setup": 4.077,
-          "agent_setup": 64.729,
-          "agent_exec": 210.052,
-          "verifier": 19.47
-        },
-        "tokens": {
-          "input": 0,
-          "output": 22966,
-          "cache": 0
-        }
-      }
-    ]
-  },
-  "ml_serving_pipeline_checkpoint": {
-    "instruction": "Build a stateful ML model serving system in `/home/user/modal_project/app.py` that uses a Modal Class with an `@enter` lifecycle method to train and checkpoint a scikit-learn model to a Modal Volume, exposes an API-key-authenticated FastAPI web endpoint for predictions, and records request statistics in a Modal Dict named `ml-serving-pipeline-output`. Set `MODAL_ENVIRONMENT=modal-vsdatagen` and deploy with `modal deploy /home/user/modal_project/app.py`, then invoke the endpoint at least once with a valid request so the Dict is populated.\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "ml_serving_pipeline_checkpoint__GdEyiFL",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 367.615,
-        "latency_breakdown": {
-          "env_setup": 11.974,
-          "agent_setup": 89.481,
-          "agent_exec": 231.862,
-          "verifier": 23.875
-        },
-        "tokens": {
-          "input": 0,
-          "output": 31736,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "ml_serving_pipeline_checkpoint__fUqtw9B",
-        "agent": "pochi",
-        "model": "google/gemini-3.1-pro",
-        "provider": "google",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 514.94,
-        "latency_breakdown": {
-          "env_setup": 1.585,
-          "agent_setup": 28.524,
-          "agent_exec": 451.668,
-          "verifier": 22.385
-        },
-        "tokens": {
-          "input": 0,
-          "output": 30560,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "ml_serving_pipeline_checkpoint__XmCUZKe",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 355.469,
-        "latency_breakdown": {
-          "env_setup": 5.267,
-          "agent_setup": 130.05,
-          "agent_exec": 180.981,
-          "verifier": 28.676
-        },
-        "tokens": {
-          "input": 0,
-          "output": 25606,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "ml_serving_pipeline_checkpoint__5HC4Wzg",
-        "agent": "pochi",
-        "model": "zai/glm-4.7",
-        "provider": "zai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 507.827,
-        "latency_breakdown": {
-          "env_setup": 1.937,
-          "agent_setup": 21.345,
-          "agent_exec": 449.318,
-          "verifier": 24.768
-        },
-        "tokens": {
-          "input": 0,
-          "output": 38990,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "ml_serving_pipeline_checkpoint__6tZxBpU",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 373.977,
-        "latency_breakdown": {
-          "env_setup": 3.994,
-          "agent_setup": 53.101,
-          "agent_exec": 286.106,
-          "verifier": 20.324
-        },
-        "tokens": {
-          "input": 0,
-          "output": 34531,
-          "cache": 0
-        }
-      }
-    ]
-  },
-  "modal_gpu_batch_inference": {
+  "agent_treasury_orchestrator": {
     "instruction": "",
     "trials": [
       {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "modal_gpu_batch_inference__4VPcfz8",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 273.048,
-        "latency_breakdown": {
-          "env_setup": 12.376,
-          "agent_setup": 74.572,
-          "agent_exec": 146.01,
-          "verifier": 29.406
-        },
-        "tokens": {
-          "input": 0,
-          "output": 19633,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "modal_gpu_batch_inference__zczbhum",
-        "agent": "pochi",
-        "model": "google/gemini-3.1-pro",
-        "provider": "google",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 475.556,
-        "latency_breakdown": {
-          "env_setup": 6.964,
-          "agent_setup": 49.35,
-          "agent_exec": 383.61,
-          "verifier": 24.934
-        },
-        "tokens": {
-          "input": 0,
-          "output": 22354,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "modal_gpu_batch_inference__UZsZavG",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": false,
-        "reward": 0,
-        "error": false,
-        "latency_sec": 207.128,
-        "latency_breakdown": {
-          "env_setup": 7.784,
-          "agent_setup": 132.251,
-          "agent_exec": 43.903,
-          "verifier": 12.256
-        },
-        "tokens": {
-          "input": 0,
-          "output": 16229,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "modal_gpu_batch_inference__KMDbqCK",
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "agent_treasury_orchestrator__M7FhSdb",
         "agent": "pochi",
         "model": "zai/glm-4.7",
         "provider": "zai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 192.127,
+        "latency_sec": 120.476,
         "latency_breakdown": {
-          "env_setup": 8.31,
-          "agent_setup": 54.492,
-          "agent_exec": 111.231,
-          "verifier": 7.277
+          "env_setup": 1.755,
+          "agent_setup": 10.807,
+          "agent_exec": 96.997,
+          "verifier": 7.516
         },
         "tokens": {
           "input": 0,
-          "output": 16660,
+          "output": 17950,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "modal_gpu_batch_inference__2LkXtUg",
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "agent_treasury_orchestrator__AjFGAP5",
         "agent": "pochi",
         "model": "openai/gpt-5.2-codex",
         "provider": "openai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 125.58,
+        "latency_sec": 75.775,
         "latency_breakdown": {
-          "env_setup": 5.934,
-          "agent_setup": 65.623,
-          "agent_exec": 35.064,
-          "verifier": 7.151
+          "env_setup": 1.497,
+          "agent_setup": 10.894,
+          "agent_exec": 52.002,
+          "verifier": 7.418
         },
         "tokens": {
           "input": 0,
-          "output": 12932,
+          "output": 14782,
           "cache": 0
-        }
-      }
-    ]
-  },
-  "hyperparameter_sweep_orchestrator": {
-    "instruction": "# Hyperparameter Sweep Orchestration System on Modal\n\nYou are an ML engineer building a hyperparameter sweep orchestration system on Modal. The entire system must be implemented in a single file: `/home/user/modal_project/sweep.py`.\n\n## System Requirements\n\nBuild a Modal App named `\"hyperparameter-sweep\"` that orchestrates parallel hyperparameter experiments with the following capabilities:\n\n### Sweep Runner (Modal Class with Lifecycle Methods)\nDefine a Modal Class with lifecycle methods that runs parallel experiments. The class should:\n- Sweep combinations of **learning rate** and **batch size** using numpy (at least 3 values for each, producing >= 9 total combinations)\n- Use `.starmap()` to run experiments in parallel\n- Track the best configuration (highest accuracy or lowest loss) across all runs\n\n### Results Storage (Modal Volume)\nUse a **Modal Volume named `hp-sweep-experiments`** (with `create_if_missing=True`) to persist each experiment's results as a JSON file. Each file should contain the hyperparameters used and the resulting metric.\n\n### Best Configuration Tracking (Modal Dict)\nUse a **Modal Dict named `hp-sweep-results`** (with `create_if_missing=True`) to track:\n- `best_config` — a JSON object containing the best hyperparameter configuration found (must include `learning_rate` or `lr` and `batch_size` or `bs` fields)\n- `experiment_count` — an integer representing the total number of experiments run (must be >= 9)\n\n### Web Endpoint (FastAPI)\nExpose the best result through a **FastAPI web endpoint** that returns the best configuration as JSON.\n\n### Manual Trigger (Local Entrypoint)\nImplement a `@app.local_entrypoint()` that triggers the full sweep, populates the Volume with experiment results, and updates the Dict with `best_config` and `experiment_count`.\n\n## Deployment Instructions\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` in your shell before running any Modal commands:\n\n```\nexport MODAL_ENVIRONMENT=modal-vsdatagen\n```\n\nDeploy the app:\n\n```\nmodal deploy /home/user/modal_project/sweep.py\n```\n\nAfter deployment, trigger a manual run to populate the Volume and Dict:\n\n```\nmodal run /home/user/modal_project/sweep.py\n```\n\n**Do NOT use the `-e` CLI flag.** Always set `MODAL_ENVIRONMENT` as an environment variable instead.\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "hyperparameter_sweep_orchestrato__aRkDLcG",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 295.668,
-        "latency_breakdown": {
-          "env_setup": 11.913,
-          "agent_setup": 81.912,
-          "agent_exec": 140.45,
-          "verifier": 50.91
         },
-        "tokens": {
-          "input": 0,
-          "output": 23784,
-          "cache": 0
-        }
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "hyperparameter_sweep_orchestrato__Ujk6yo7",
-        "agent": "pochi",
-        "model": "google/gemini-3.1-pro",
-        "provider": "google",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 304.232,
-        "latency_breakdown": {
-          "env_setup": 1.794,
-          "agent_setup": 21.535,
-          "agent_exec": 241.858,
-          "verifier": 28.539
-        },
-        "tokens": {
-          "input": 0,
-          "output": 23340,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "hyperparameter_sweep_orchestrato__hsauvxh",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 282.084,
-        "latency_breakdown": {
-          "env_setup": 5.129,
-          "agent_setup": 131.213,
-          "agent_exec": 107.73,
-          "verifier": 27.545
-        },
-        "tokens": {
-          "input": 0,
-          "output": 24707,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "hyperparameter_sweep_orchestrato__G2AmiSj",
-        "agent": "pochi",
-        "model": "zai/glm-4.7",
-        "provider": "zai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 285.744,
-        "latency_breakdown": {
-          "env_setup": 2.076,
-          "agent_setup": 21.449,
-          "agent_exec": 190.344,
-          "verifier": 61.382
-        },
-        "tokens": {
-          "input": 0,
-          "output": 21341,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "hyperparameter_sweep_orchestrato__sHAriYV",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 160.449,
-        "latency_breakdown": {
-          "env_setup": 4.154,
-          "agent_setup": 52.93,
-          "agent_exec": 66.057,
-          "verifier": 26.616
-        },
-        "tokens": {
-          "input": 0,
-          "output": 16591,
-          "cache": 0
-        }
-      }
-    ]
-  },
-  "modal_hp_sweep_checkpoint": {
-    "instruction": "Build a distributed hyperparameter sweep system in `/home/user/hp_sweep/app.py` that uses `modal.App(\"hp-sweep-checkpoint\")` to parallelize evaluation of learning-rate and batch-size combinations via `.map()` or `.starmap()`, checkpoints all results to a Modal Volume named `\"hp-sweep-results\"`, tracks the best configuration and score in a Modal Dict named `\"hp-sweep-state\"`, and schedules the sweep to run periodically using a cron or period schedule. Set `MODAL_ENVIRONMENT=modal-vsdatagen` and deploy with `modal deploy /home/user/hp_sweep/app.py`.\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "modal_hp_sweep_checkpoint__y3H74ma",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 277.142,
-        "latency_breakdown": {
-          "env_setup": 11.932,
-          "agent_setup": 90.584,
-          "agent_exec": 135.701,
-          "verifier": 28.362
-        },
-        "tokens": {
-          "input": 0,
-          "output": 22929,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "modal_hp_sweep_checkpoint__Z7z8PiH",
-        "agent": "pochi",
-        "model": "google/gemini-3.1-pro",
-        "provider": "google",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 378.265,
-        "latency_breakdown": {
-          "env_setup": 5.965,
-          "agent_setup": 49.814,
-          "agent_exec": 288.942,
-          "verifier": 23.11
-        },
-        "tokens": {
-          "input": 0,
-          "output": 16836,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "modal_hp_sweep_checkpoint__wpmBe9g",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 237.129,
-        "latency_breakdown": {
-          "env_setup": 5.199,
-          "agent_setup": 123.964,
-          "agent_exec": 73.221,
-          "verifier": 24.193
-        },
-        "tokens": {
-          "input": 0,
-          "output": 18998,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "modal_hp_sweep_checkpoint__bf72JTe",
-        "agent": "pochi",
-        "model": "zai/glm-4.7",
-        "provider": "zai",
-        "passed": false,
-        "reward": 0,
-        "error": false,
-        "latency_sec": 659.468,
-        "latency_breakdown": {
-          "env_setup": 6.508,
-          "agent_setup": 47.455,
-          "agent_exec": 587.616,
-          "verifier": 7.373
-        },
-        "tokens": {
-          "input": 0,
-          "output": 64913,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "modal_hp_sweep_checkpoint__gKNaRyT",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 170.796,
-        "latency_breakdown": {
-          "env_setup": 4.166,
-          "agent_setup": 63.928,
-          "agent_exec": 61.392,
-          "verifier": 30.588
-        },
-        "tokens": {
-          "input": 0,
-          "output": 16396,
-          "cache": 0
-        }
-      }
-    ]
-  },
-  "rate_limited_api_gateway": {
-    "instruction": "# Stateful Distributed Rate-Limited API Gateway on Modal\n\nYou are a platform engineer building a stateful, distributed rate-limited API gateway on Modal. The entire system must be implemented in a single file: `/home/user/modal_project/gateway.py`.\n\n## System Requirements\n\nBuild a Modal App named `\"rate-limited-gateway\"` with the following capabilities:\n\n### Gateway Class (Modal Class with Lifecycle Methods)\nDefine a Modal Class with lifecycle methods that implements the rate-limiting logic. The class should:\n- Enforce per-client rate limits based on configuration from the secret\n- Track request statistics in the shared Dict\n- Return HTTP 429 when a client exceeds its rate limit\n\n### Configuration (Modal Secret)\nUse a **Modal Secret named `gateway-config`** containing:\n- `RATE_LIMIT_PER_MINUTE` — the maximum number of requests allowed per client per minute\n- `GATEWAY_API_KEY` — an API key for authenticating requests\n\n### Distributed State (Modal Dict)\nUse a **Modal Dict named `gateway-stats`** (with `create_if_missing=True`) to track distributed gateway statistics. The Dict must contain these keys:\n- `total_requests` — an integer count of all requests received (must be >= 1 after a run)\n- `rate_limited_count` — an integer count of requests that were rate-limited (HTTP 429)\n- `active_clients` — an integer count of unique clients that have made requests (must be >= 1 after a run)\n\n### Custom Image\nUse a custom Modal Image with `httpx` and `pydantic` installed.\n\n### Web Endpoint (FastAPI)\nExpose a **FastAPI web endpoint** that enforces per-client rate limits and returns HTTP 429 when exceeded.\n\n### Manual Trigger (Local Entrypoint)\nImplement a `@app.local_entrypoint()` that sends simulated requests to the gateway to populate the `gateway-stats` Dict with `total_requests`, `rate_limited_count`, and `active_clients`.\n\n## Deployment Instructions\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` in your shell before running any Modal commands:\n\n```\nexport MODAL_ENVIRONMENT=modal-vsdatagen\n```\n\nDeploy the app:\n\n```\nmodal deploy /home/user/modal_project/gateway.py\n```\n\nAfter deployment, trigger a manual run to populate the Dict:\n\n```\nmodal run /home/user/modal_project/gateway.py\n```\n\n**Do NOT use the `-e` CLI flag.** Always set `MODAL_ENVIRONMENT` as an environment variable instead.\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "rate_limited_api_gateway__VhwqMMP",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 418.759,
-        "latency_breakdown": {
-          "env_setup": 11.911,
-          "agent_setup": 69.404,
-          "agent_exec": 306.424,
-          "verifier": 20.577
-        },
-        "tokens": {
-          "input": 0,
-          "output": 37573,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "rate_limited_api_gateway__eYYFyGa",
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "agent_treasury_orchestrator__Th3EnFx",
         "agent": "pochi",
         "model": "google/gemini-3.1-pro",
         "provider": "google",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 396.195,
+        "latency_sec": 154.09,
         "latency_breakdown": {
-          "env_setup": 2.063,
-          "agent_setup": 23.434,
-          "agent_exec": 344.516,
-          "verifier": 15.567
+          "env_setup": 1.441,
+          "agent_setup": 10.7,
+          "agent_exec": 132.671,
+          "verifier": 6.976
         },
         "tokens": {
           "input": 0,
-          "output": 22555,
+          "output": 13001,
           "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "rate_limited_api_gateway__EospxLM",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": false,
-        "reward": 0,
-        "error": false,
-        "latency_sec": 306.347,
-        "latency_breakdown": {
-          "env_setup": 5.105,
-          "agent_setup": 135.387,
-          "agent_exec": 149.229,
-          "verifier": 6.119
         },
-        "tokens": {
-          "input": 0,
-          "output": 22668,
-          "cache": 0
-        }
-      },
+        "browser_verification_cases": []
+      }
+    ]
+  },
+  "batch_nft_airdrop_from_list": {
+    "instruction": "",
+    "trials": [
       {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "rate_limited_api_gateway__65na9w3",
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "batch_nft_airdrop_from_list__WZNGPiD",
         "agent": "pochi",
         "model": "zai/glm-4.7",
         "provider": "zai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 636.638,
+        "latency_sec": 109.04,
         "latency_breakdown": {
-          "env_setup": 1.667,
-          "agent_setup": 20.338,
-          "agent_exec": 587.505,
-          "verifier": 16.585
+          "env_setup": 1.756,
+          "agent_setup": 13.087,
+          "agent_exec": 84.76,
+          "verifier": 6.505
         },
         "tokens": {
           "input": 0,
-          "output": 28681,
+          "output": 32145,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "rate_limited_api_gateway__jE3AW2A",
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "batch_nft_airdrop_from_list__F5g2Xqv",
         "agent": "pochi",
         "model": "openai/gpt-5.2-codex",
         "provider": "openai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 182.614,
+        "latency_sec": 50.512,
         "latency_breakdown": {
-          "env_setup": 4.179,
-          "agent_setup": 65.902,
-          "agent_exec": 93.276,
-          "verifier": 8.716
+          "env_setup": 1.679,
+          "agent_setup": 10.587,
+          "agent_exec": 27.864,
+          "verifier": 6.699
         },
         "tokens": {
           "input": 0,
-          "output": 17957,
+          "output": 12094,
           "cache": 0
-        }
-      }
-    ]
-  },
-  "modal_doc_ocr_pipeline": {
-    "instruction": "Build a document OCR processing pipeline in `/home/user/doc_pipeline/app.py` that processes a batch of text documents in parallel on Modal, simulates OCR by extracting word count and character statistics from each document's text content, persists results as JSON files in a Modal Volume named `ocr-output-volume`, validates a processing configuration from a Modal Secret named `ocr-api-config` (which must contain `PROCESSING_MODE=batch`), and tracks job state — including a `total_processed` count — in a Modal Dict named `ocr-job-tracker`.\n\nYour implementation must combine the following four Modal capabilities:\n\n1. **Modal Class with lifecycle hook** — Define a class that initializes its processing context at container startup (before handling any documents), and exposes a method for processing individual documents. The class must have access to the volume and the secret.\n\n2. **Modal Volume** (`ocr-output-volume`) — Persist each document's OCR result (word count, character count, document ID) as a JSON file inside the volume. Create the volume with `create_if_missing=True`.\n\n3. **Modal Secret** (`ocr-api-config`) — Create this secret before deploying with `PROCESSING_MODE=batch`. The processing method must read and validate `PROCESSING_MODE` from the environment; if it is missing or not equal to `batch`, raise an error.\n\n4. **Modal Dict** (`ocr-job-tracker`) — Track processing state across the batch. At minimum, store a `total_processed` key containing the integer count of documents processed (must be >= 3). Create the dict with `create_if_missing=True`.\n\nThe `local_entrypoint` must drive the full pipeline: define at least 3 sample text documents as strings in your code, fan them out for parallel processing using `.map()` or `.starmap()`, write results to the volume, and update the dict with the total count.\n\nThe Modal App must be named `doc-ocr-pipeline`.\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` and deploy using:\n```\nmodal deploy /home/user/doc_pipeline/app.py\n```\n\nAfter deploying, trigger the pipeline with:\n```\nMODAL_ENVIRONMENT=modal-vsdatagen modal run /home/user/doc_pipeline/app.py\n```\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "modal_doc_ocr_pipeline__RNdaia7",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 345.827,
-        "latency_breakdown": {
-          "env_setup": 12.023,
-          "agent_setup": 65.855,
-          "agent_exec": 227.382,
-          "verifier": 30.066
         },
-        "tokens": {
-          "input": 0,
-          "output": 29050,
-          "cache": 0
-        }
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "modal_doc_ocr_pipeline__WU5Ci9Q",
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "batch_nft_airdrop_from_list__tVsyUV2",
         "agent": "pochi",
         "model": "google/gemini-3.1-pro",
         "provider": "google",
-        "passed": true,
-        "reward": 1,
+        "passed": false,
+        "reward": 0,
         "error": false,
-        "latency_sec": 200.728,
+        "latency_sec": 56.634,
         "latency_breakdown": {
-          "env_setup": 2.013,
-          "agent_setup": 22.237,
-          "agent_exec": 140.012,
-          "verifier": 26.058
+          "env_setup": 1.563,
+          "agent_setup": 10.574,
+          "agent_exec": 35.265,
+          "verifier": 6.989
         },
         "tokens": {
           "input": 0,
-          "output": 19542,
+          "output": 12153,
           "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "modal_doc_ocr_pipeline__jzgHdoe",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 259.943,
-        "latency_breakdown": {
-          "env_setup": 5.183,
-          "agent_setup": 137.107,
-          "agent_exec": 82.855,
-          "verifier": 24.293
         },
-        "tokens": {
-          "input": 0,
-          "output": 21506,
-          "cache": 0
-        }
-      },
+        "browser_verification_cases": []
+      }
+    ]
+  },
+  "create_crossmint_wallet": {
+    "instruction": "",
+    "trials": [
       {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "modal_doc_ocr_pipeline__cfbhtsv",
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "create_crossmint_wallet__UTrHUY9",
         "agent": "pochi",
         "model": "zai/glm-4.7",
         "provider": "zai",
         "passed": true,
         "reward": 1,
         "error": false,
-        "latency_sec": 316.982,
+        "latency_sec": 79.674,
         "latency_breakdown": {
-          "env_setup": 1.96,
-          "agent_setup": 22.022,
-          "agent_exec": 245.283,
-          "verifier": 37.266
+          "env_setup": 2.458,
+          "agent_setup": 16.219,
+          "agent_exec": 47.35,
+          "verifier": 9.744
         },
         "tokens": {
           "input": 0,
-          "output": 31494,
+          "output": 14077,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "modal_doc_ocr_pipeline__Bt2LBvz",
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "create_crossmint_wallet__bWx9av6",
         "agent": "pochi",
         "model": "openai/gpt-5.2-codex",
         "provider": "openai",
-        "passed": true,
-        "reward": 1,
+        "passed": false,
+        "reward": 0,
         "error": false,
-        "latency_sec": 186.38,
+        "latency_sec": 98.143,
         "latency_breakdown": {
-          "env_setup": 4.249,
-          "agent_setup": 56.29,
-          "agent_exec": 90.296,
-          "verifier": 25.047
+          "env_setup": 2.328,
+          "agent_setup": 15.102,
+          "agent_exec": 68.308,
+          "verifier": 8.531
         },
         "tokens": {
           "input": 0,
-          "output": 18470,
+          "output": 17942,
           "cache": 0
-        }
-      }
-    ]
-  },
-  "etl_pipeline_orchestrator": {
-    "instruction": "# Fault-Tolerant ETL Pipeline on Modal\n\nYou are a platform engineer tasked with building a production-grade, fault-tolerant ETL pipeline using Modal's serverless infrastructure. The entire system must be implemented in a single file: `/home/user/modal_project/etl.py`.\n\n## System Requirements\n\nBuild a Modal App named `etl-pipeline` that operates as an end-to-end data pipeline with the following capabilities:\n\n### Data Ingestion (Scheduled)\nThe pipeline must automatically ingest synthetic data on a **5-minute schedule** using `modal.Period(minutes=5)`. The ingestion component generates batches of raw records (each with a category drawn from a small fixed set, a numeric value, and a timestamp), persists them as JSON files on a **Modal NetworkFileSystem (NFS)** named `etl-nfs`, and immediately kicks off data processing for the new batch. Each ingestion run must produce a distinct file using the naming convention `raw_<timestamp>.json`. Use `create_if_missing=True` when referencing the NFS.\n\n### Data Processing (Fault-Tolerant)\nA separate processing function reads a raw data file from the NFS, aggregates the records by category (computing statistics such as count and sum per category), and writes the aggregated output back to the NFS using the naming convention `processed_<timestamp>.json`. This function must be configured with **`retries=3` and `timeout=120`** to handle transient failures gracefully.\n\n### Live Status Endpoint (FastAPI)\nExpose a **GET `/status`** web endpoint using FastAPI that reads the most recently written processed results from the NFS and returns the pipeline statistics as JSON. If no processed data is available, the endpoint should return a JSON response clearly indicating the pipeline has not run yet. This endpoint must have access to the NFS.\n\n### Pipeline Metadata (Modal Dict)\nAll pipeline run metadata must be persisted in a **Modal Dict named `etl-pipeline-metadata`** (use `create_if_missing=True`). The dict must track at minimum these exact keys:\n- `run_count` — an integer counter that increments each ingestion cycle (must be >= 1 after a manual run)\n- `last_run_timestamp` — the timestamp of the most recent successful run\n- `error_count` — an integer counter for processing failures\n\n### Manual Trigger\nImplement a `@app.local_entrypoint()` that allows the pipeline to be triggered manually — running the full ingest-and-process cycle — so the system can be tested without waiting for the cron schedule to fire.\n\n## Deployment Instructions\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` in your shell before running any Modal commands:\n\n```\nexport MODAL_ENVIRONMENT=modal-vsdatagen\n```\n\nDeploy the app:\n\n```\nmodal deploy /home/user/modal_project/etl.py\n```\n\nAfter deployment, trigger a manual run to populate the NFS and Dict:\n\n```\nmodal run /home/user/modal_project/etl.py\n```\n\n**Do NOT use the `-e` CLI flag.** Always set `MODAL_ENVIRONMENT` as an environment variable instead.\n",
-    "trials": [
-      {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "etl_pipeline_orchestrator__UJBdjVR",
-        "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 261.856,
-        "latency_breakdown": {
-          "env_setup": 11.999,
-          "agent_setup": 85.821,
-          "agent_exec": 124.892,
-          "verifier": 28.528
         },
-        "tokens": {
-          "input": 0,
-          "output": 22832,
-          "cache": 0
-        }
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "etl_pipeline_orchestrator__vtTQyvZ",
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "create_crossmint_wallet__ASZRn8v",
         "agent": "pochi",
         "model": "google/gemini-3.1-pro",
         "provider": "google",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 361.915,
-        "latency_breakdown": {
-          "env_setup": 1.817,
-          "agent_setup": 23.287,
-          "agent_exec": 301.226,
-          "verifier": 25.141
-        },
-        "tokens": {
-          "input": 0,
-          "output": 20660,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "etl_pipeline_orchestrator__JPXecYA",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 289.708,
+        "latency_sec": 69.425,
         "latency_breakdown": {
-          "env_setup": 5.249,
-          "agent_setup": 128.654,
-          "agent_exec": 132.456,
-          "verifier": 12.901
+          "env_setup": 2.174,
+          "agent_setup": 14.308,
+          "agent_exec": 42.197,
+          "verifier": 8.219
         },
         "tokens": {
           "input": 0,
-          "output": 21240,
+          "output": 11673,
           "cache": 0
-        }
-      },
+        },
+        "browser_verification_cases": []
+      }
+    ]
+  },
+  "debug_invalid_api_key_scope": {
+    "instruction": "",
+    "trials": [
       {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "etl_pipeline_orchestrator__dh8xFHg",
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "debug_invalid_api_key_scope__H8nLwmU",
         "agent": "pochi",
         "model": "zai/glm-4.7",
         "provider": "zai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 262.555,
+        "latency_sec": 123.38,
         "latency_breakdown": {
-          "env_setup": 2.228,
-          "agent_setup": 22.132,
-          "agent_exec": 221.386,
-          "verifier": 6.281
+          "env_setup": 2.233,
+          "agent_setup": 14.767,
+          "agent_exec": 93.088,
+          "verifier": 9.46
         },
         "tokens": {
           "input": 0,
-          "output": 20291,
+          "output": 16083,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "etl_pipeline_orchestrator__M9djMv6",
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "debug_invalid_api_key_scope__EsfqhXa",
         "agent": "pochi",
         "model": "openai/gpt-5.2-codex",
         "provider": "openai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 172.375,
+        "latency_sec": 63.866,
         "latency_breakdown": {
-          "env_setup": 3.946,
-          "agent_setup": 69.282,
-          "agent_exec": 67.25,
-          "verifier": 21.286
+          "env_setup": 1.789,
+          "agent_setup": 14.252,
+          "agent_exec": 37.021,
+          "verifier": 7.094
         },
         "tokens": {
           "input": 0,
-          "output": 16687,
+          "output": 12215,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "debug_invalid_api_key_scope__umoVFtM",
+        "agent": "pochi",
+        "model": "google/gemini-3.1-pro",
+        "provider": "google",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 400.953,
+        "latency_breakdown": {
+          "env_setup": 1.801,
+          "agent_setup": 12.573,
+          "agent_exec": 374.697,
+          "verifier": 8.394
+        },
+        "tokens": {
+          "input": 0,
+          "output": 14084,
+          "cache": 0
+        },
+        "browser_verification_cases": []
       }
     ]
   },
-  "modal_gpu_embedding_service": {
-    "instruction": "# GPU-Accelerated Text Embedding Service\n\nYou are an ML engineer tasked with deploying a production-grade **GPU-accelerated text embedding service** on Modal. The system must process text inputs and return dense vector embeddings suitable for downstream tasks such as semantic search, clustering, or retrieval-augmented generation.\n\n## Project Location\n\nA starter file exists at `/home/user/embedding_service/app.py` with a basic Modal App stub. All your implementation must go in this single file.\n\n## System Requirements\n\nYour service must integrate four Modal capabilities:\n\n1. **Modal Volume** — Create a Modal Volume (using `create_if_missing=True`) to cache the downloaded model weights on first use. The volume should be mounted into the serving class so that repeated cold starts avoid redundant model downloads from the internet.\n\n2. **Modal Class with GPU and warm pool** — Define a Modal class using `@app.cls()` that:\n   - Runs on a GPU (e.g., `gpu=\"T4\"` or `gpu=\"any\"`) with `min_containers=1` to keep a warm instance\n   - Uses a custom image that installs the `sentence-transformers` library (and its dependencies)\n   - Mounts the Volume for model caching\n   - Has a `@modal.enter()` lifecycle method that loads the `all-MiniLM-L6-v2` sentence-transformers model from the cached volume path on startup\n\n3. **FastAPI web endpoint** — Expose the embedding generation as a web endpoint (using `@modal.asgi_app()` or `@modal.fastapi_app()`) that:\n   - Accepts POST requests with a JSON body containing a `text` field (a string or list of strings)\n   - Returns a JSON response with an `embeddings` field (list of float vectors) and a `model` field with the model name\n   - Is accessible over HTTPS without authentication\n\n4. **Modal Dict for request tracking** — Use a Modal Dict named `\"embedding-service-stats\"` (with `create_if_missing=True`) to track:\n   - The total number of requests processed\n   - The total number of tokens processed across all requests\n   Update these counters on every successful embedding request.\n\n## App Name\n\nThe Modal App must be named `\"gpu-embedding-service\"`.\n\n## Deployment\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` and deploy with:\n```\nmodal deploy /home/user/embedding_service/app.py\n```\n\nAfter deploying, send at least one POST request to the embedding endpoint with some sample text so that the `\"embedding-service-stats\"` Modal Dict is populated with request and token counts. The endpoint URL is printed by `modal deploy`.\n",
+  "fix_broken_sdk_wallet_script": {
+    "instruction": "",
     "trials": [
       {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "modal_gpu_embedding_service__pYsczmU",
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "fix_broken_sdk_wallet_script__jpx7zx3",
         "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
         "passed": true,
         "reward": 1,
         "error": false,
-        "latency_sec": 511.716,
+        "latency_sec": 109.409,
         "latency_breakdown": {
-          "env_setup": 12.127,
-          "agent_setup": 88.325,
-          "agent_exec": 338.109,
-          "verifier": 62.618
+          "env_setup": 2.141,
+          "agent_setup": 12.735,
+          "agent_exec": 83.521,
+          "verifier": 7.918
         },
         "tokens": {
           "input": 0,
-          "output": 38565,
+          "output": 17138,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "modal_gpu_embedding_service__2JTKCjo",
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "fix_broken_sdk_wallet_script__vPMbmMF",
+        "agent": "pochi",
+        "model": "openai/gpt-5.2-codex",
+        "provider": "openai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 85.764,
+        "latency_breakdown": {
+          "env_setup": 1.469,
+          "agent_setup": 10.804,
+          "agent_exec": 63.187,
+          "verifier": 7.513
+        },
+        "tokens": {
+          "input": 0,
+          "output": 16495,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "fix_broken_sdk_wallet_script__LpUWJpU",
         "agent": "pochi",
         "model": "google/gemini-3.1-pro",
         "provider": "google",
         "passed": true,
         "reward": 1,
         "error": true,
-        "latency_sec": 683.98,
+        "latency_sec": 625.372,
         "latency_breakdown": {
-          "env_setup": 6.049,
-          "agent_setup": 32.362,
-          "agent_exec": 600.007,
-          "verifier": 34.778
+          "env_setup": 2.088,
+          "agent_setup": 12.531,
+          "agent_exec": 600.45,
+          "verifier": 7.627
         },
         "tokens": {
           "input": 0,
           "output": 0,
           "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "modal_gpu_embedding_service__kzD6hwB",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 666.682,
-        "latency_breakdown": {
-          "env_setup": 5.207,
-          "agent_setup": 134.824,
-          "agent_exec": 499.441,
-          "verifier": 16.72
         },
-        "tokens": {
-          "input": 0,
-          "output": 60213,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "modal_gpu_embedding_service__HHe4CV4",
-        "agent": "pochi",
-        "model": "zai/glm-4.7",
-        "provider": "zai",
-        "passed": true,
-        "reward": 1,
-        "error": false,
-        "latency_sec": 700.124,
-        "latency_breakdown": {
-          "env_setup": 6.496,
-          "agent_setup": 50.23,
-          "agent_exec": 589.469,
-          "verifier": 43.408
-        },
-        "tokens": {
-          "input": 0,
-          "output": 39493,
-          "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "modal_gpu_embedding_service__Xxc7RAE",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex",
-        "provider": "openai",
-        "passed": false,
-        "reward": 0,
-        "error": false,
-        "latency_sec": 132.031,
-        "latency_breakdown": {
-          "env_setup": 3.944,
-          "agent_setup": 45.234,
-          "agent_exec": 63.819,
-          "verifier": 8.155
-        },
-        "tokens": {
-          "input": 0,
-          "output": 17325,
-          "cache": 0
-        }
+        "browser_verification_cases": []
       }
     ]
   },
-  "modal_nfs_etl_pipeline": {
-    "instruction": "# Serverless ETL Pipeline with Network File System on Modal\n\nYou are a platform engineer building a serverless ETL pipeline on Modal that uses a Network File System as a shared staging area. The entire system must be implemented in a single file: `/home/user/etl_pipeline/app.py`.\n\n## System Requirements\n\nBuild a Modal App named `\"nfs-etl-pipeline\"` with the following capabilities:\n\n### ETL Processor (Modal Class with Lifecycle Hooks)\nDefine a stateful `ETLProcessor` class with lifecycle hooks that handles the extract-transform-load workflow.\n\n### Shared Staging Area (Modal NFS)\nUse a **Modal NetworkFileSystem named `etl-shared-fs`** (with `create_if_missing=True`) as the shared staging area for data between pipeline stages.\n\n### Database Credentials (Modal Secret)\nUse a **Modal Secret named `etl-db-config`** containing database credentials. The secret will be created with keys `DB_HOST` and `DB_PORT`. Your code should reference these keys from the secret (do NOT require any additional keys like `DB_USER` or `DB_PASSWORD` — only `DB_HOST` and `DB_PORT` are provided).\n\n### Pipeline State Tracking (Modal Dict)\nUse a **Modal Dict named `etl-pipeline-state`** (with `create_if_missing=True`) to track pipeline run status across batches. The Dict must contain:\n- `last_run_status` — a string that includes `\"success\"` when the pipeline completes successfully\n- `batches_processed` — the number of data batches processed (must be `2` after a full run)\n\n### Cron-Scheduled Trigger\nInclude a cron-scheduled function that triggers the pipeline on a regular interval.\n\n### Manual Trigger (Local Entrypoint)\nImplement a `@app.local_entrypoint()` that processes **two data batches** and records the outcome in the shared Dict, setting `last_run_status` to include `\"success\"` and `batches_processed` to `2`.\n\n## Deployment Instructions\n\nSet `MODAL_ENVIRONMENT=modal-vsdatagen` in your shell before running any Modal commands:\n\n```\nexport MODAL_ENVIRONMENT=modal-vsdatagen\n```\n\nDeploy the app:\n\n```\nMODAL_ENVIRONMENT=modal-vsdatagen modal deploy /home/user/etl_pipeline/app.py\n```\n\nAfter deployment, trigger a manual run to populate the NFS and Dict:\n\n```\nMODAL_ENVIRONMENT=modal-vsdatagen modal run /home/user/etl_pipeline/app.py\n```\n\n**Do NOT use the `-e` CLI flag.** Always set `MODAL_ENVIRONMENT` as an environment variable instead.\n",
+  "mint_nft_to_email": {
+    "instruction": "",
     "trials": [
       {
-        "job_name": "2026-03-27__01-42-55",
-        "trial_name": "modal_nfs_etl_pipeline__ZLSVZ9k",
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "mint_nft_to_email__CN6ivnZ",
         "agent": "pochi",
-        "model": "anthropic/claude-4-6-sonnet",
-        "provider": "anthropic",
-        "passed": true,
-        "reward": 1,
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
         "error": false,
-        "latency_sec": 274.843,
+        "latency_sec": 83.7,
         "latency_breakdown": {
-          "env_setup": 12.055,
-          "agent_setup": 79.389,
-          "agent_exec": 139.381,
-          "verifier": 33.531
+          "env_setup": 1.761,
+          "agent_setup": 11.156,
+          "agent_exec": 61.251,
+          "verifier": 6.94
         },
         "tokens": {
           "input": 0,
-          "output": 23289,
+          "output": 14161,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-26__23-35-42",
-        "trial_name": "modal_nfs_etl_pipeline__L8GXHDY",
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "mint_nft_to_email__bxaAfpH",
+        "agent": "pochi",
+        "model": "openai/gpt-5.2-codex",
+        "provider": "openai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 56.392,
+        "latency_breakdown": {
+          "env_setup": 1.447,
+          "agent_setup": 10.558,
+          "agent_exec": 34.635,
+          "verifier": 7.109
+        },
+        "tokens": {
+          "input": 0,
+          "output": 11988,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "mint_nft_to_email__Rf3S5hB",
         "agent": "pochi",
         "model": "google/gemini-3.1-pro",
         "provider": "google",
         "passed": true,
         "reward": 1,
         "error": false,
-        "latency_sec": 337.953,
+        "latency_sec": 82.792,
         "latency_breakdown": {
-          "env_setup": 6.048,
-          "agent_setup": 45.623,
-          "agent_exec": 242.591,
-          "verifier": 33.23
+          "env_setup": 1.366,
+          "agent_setup": 10.776,
+          "agent_exec": 61.649,
+          "verifier": 7.157
         },
         "tokens": {
           "input": 0,
-          "output": 18566,
+          "output": 11850,
           "cache": 0
-        }
-      },
-      {
-        "job_name": "2026-03-28__10-52-06",
-        "trial_name": "modal_nfs_etl_pipeline__u9SNgv2",
-        "agent": "pochi",
-        "model": "openai/gpt-5.2-codex-with-skills",
-        "provider": "openai",
-        "passed": false,
-        "reward": 0,
-        "error": false,
-        "latency_sec": 200.311,
-        "latency_breakdown": {
-          "env_setup": 5.336,
-          "agent_setup": 134.095,
-          "agent_exec": 40.668,
-          "verifier": 8.258
         },
-        "tokens": {
-          "input": 0,
-          "output": 18528,
-          "cache": 0
-        }
-      },
+        "browser_verification_cases": []
+      }
+    ]
+  },
+  "nft_receipt_checkout_flow": {
+    "instruction": "",
+    "trials": [
       {
-        "job_name": "2026-03-26__23-59-57",
-        "trial_name": "modal_nfs_etl_pipeline__oRySWpf",
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "nft_receipt_checkout_flow__BGm8XPD",
         "agent": "pochi",
         "model": "zai/glm-4.7",
         "provider": "zai",
         "passed": true,
         "reward": 1,
         "error": false,
-        "latency_sec": 411.298,
+        "latency_sec": 97.857,
         "latency_breakdown": {
-          "env_setup": 6.484,
-          "agent_setup": 53.716,
-          "agent_exec": 301.208,
-          "verifier": 39.459
+          "env_setup": 1.632,
+          "agent_setup": 11.282,
+          "agent_exec": 73.058,
+          "verifier": 9.369
         },
         "tokens": {
           "input": 0,
-          "output": 29263,
+          "output": 16098,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
       },
       {
-        "job_name": "2026-03-27__12-34-21",
-        "trial_name": "modal_nfs_etl_pipeline__pyrfTzw",
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "nft_receipt_checkout_flow__HbCu8jM",
+        "agent": "pochi",
+        "model": "openai/gpt-5.2-codex",
+        "provider": "openai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 62.239,
+        "latency_breakdown": {
+          "env_setup": 1.433,
+          "agent_setup": 11.784,
+          "agent_exec": 37.914,
+          "verifier": 7.439
+        },
+        "tokens": {
+          "input": 0,
+          "output": 12919,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "nft_receipt_checkout_flow__6aec6gP",
+        "agent": "pochi",
+        "model": "google/gemini-3.1-pro",
+        "provider": "google",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 96.943,
+        "latency_breakdown": {
+          "env_setup": 1.36,
+          "agent_setup": 11.619,
+          "agent_exec": 73.401,
+          "verifier": 8.508
+        },
+        "tokens": {
+          "input": 0,
+          "output": 14387,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      }
+    ]
+  },
+  "poll_mint_action_status": {
+    "instruction": "",
+    "trials": [
+      {
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "poll_mint_action_status__dGm9xNt",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 106.43,
+        "latency_breakdown": {
+          "env_setup": 2.057,
+          "agent_setup": 15.723,
+          "agent_exec": 76.555,
+          "verifier": 8.325
+        },
+        "tokens": {
+          "input": 0,
+          "output": 16184,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "poll_mint_action_status__NfwWyKR",
+        "agent": "pochi",
+        "model": "openai/gpt-5.2-codex",
+        "provider": "openai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 55.161,
+        "latency_breakdown": {
+          "env_setup": 2.205,
+          "agent_setup": 14.183,
+          "agent_exec": 27.072,
+          "verifier": 7.989
+        },
+        "tokens": {
+          "input": 0,
+          "output": 12102,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "poll_mint_action_status__55yiiLz",
+        "agent": "pochi",
+        "model": "google/gemini-3.1-pro",
+        "provider": "google",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 66.283,
+        "latency_breakdown": {
+          "env_setup": 3.367,
+          "agent_setup": 18.005,
+          "agent_exec": 33.903,
+          "verifier": 8.174
+        },
+        "tokens": {
+          "input": 0,
+          "output": 11899,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      }
+    ]
+  },
+  "sdk_wallet_sign_message": {
+    "instruction": "",
+    "trials": [
+      {
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "sdk_wallet_sign_message__t4EXP5u",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 68.847,
+        "latency_breakdown": {
+          "env_setup": 1.633,
+          "agent_setup": 12.327,
+          "agent_exec": 44.693,
+          "verifier": 7.697
+        },
+        "tokens": {
+          "input": 0,
+          "output": 13955,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "sdk_wallet_sign_message__aKk3h9Y",
+        "agent": "pochi",
+        "model": "openai/gpt-5.2-codex",
+        "provider": "openai",
+        "passed": true,
+        "reward": 1,
+        "error": false,
+        "latency_sec": 148.87,
+        "latency_breakdown": {
+          "env_setup": 1.463,
+          "agent_setup": 10.802,
+          "agent_exec": 125.626,
+          "verifier": 7.084
+        },
+        "tokens": {
+          "input": 0,
+          "output": 47411,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "sdk_wallet_sign_message__pFvWUbR",
+        "agent": "pochi",
+        "model": "google/gemini-3.1-pro",
+        "provider": "google",
+        "passed": true,
+        "reward": 1,
+        "error": true,
+        "latency_sec": 625.074,
+        "latency_breakdown": {
+          "env_setup": 1.362,
+          "agent_setup": 11.966,
+          "agent_exec": 600.397,
+          "verifier": 8.667
+        },
+        "tokens": {
+          "input": 0,
+          "output": 0,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      }
+    ]
+  },
+  "wallet_send_usdc_transfer": {
+    "instruction": "",
+    "trials": [
+      {
+        "job_name": "2026-04-02__21-33-12",
+        "trial_name": "wallet_send_usdc_transfer__cvXNe34",
+        "agent": "pochi",
+        "model": "zai/glm-4.7",
+        "provider": "zai",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 80.665,
+        "latency_breakdown": {
+          "env_setup": 1.635,
+          "agent_setup": 11.281,
+          "agent_exec": 58.196,
+          "verifier": 6.559
+        },
+        "tokens": {
+          "input": 0,
+          "output": 15364,
+          "cache": 0
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__21-44-31",
+        "trial_name": "wallet_send_usdc_transfer__jeUqyok",
         "agent": "pochi",
         "model": "openai/gpt-5.2-codex",
         "provider": "openai",
         "passed": false,
         "reward": 0,
         "error": false,
-        "latency_sec": 131.938,
+        "latency_sec": 47.388,
         "latency_breakdown": {
-          "env_setup": 4.242,
-          "agent_setup": 68.048,
-          "agent_exec": 41.215,
-          "verifier": 7.454
+          "env_setup": 1.336,
+          "agent_setup": 11.603,
+          "agent_exec": 23.602,
+          "verifier": 7.19
         },
         "tokens": {
           "input": 0,
-          "output": 16067,
+          "output": 11788,
           "cache": 0
-        }
+        },
+        "browser_verification_cases": []
+      },
+      {
+        "job_name": "2026-04-02__23-31-10",
+        "trial_name": "wallet_send_usdc_transfer__tFSvuqG",
+        "agent": "pochi",
+        "model": "google/gemini-3.1-pro",
+        "provider": "google",
+        "passed": false,
+        "reward": 0,
+        "error": false,
+        "latency_sec": 80.091,
+        "latency_breakdown": {
+          "env_setup": 1.458,
+          "agent_setup": 11.682,
+          "agent_exec": 57.335,
+          "verifier": 7.428
+        },
+        "tokens": {
+          "input": 0,
+          "output": 12300,
+          "cache": 0
+        },
+        "browser_verification_cases": []
       }
     ]
   }
